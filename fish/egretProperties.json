@@ -1,0 +1,42 @@
+{
+  "engineVersion": "5.2.13",
+  "compilerVersion": "5.2.13",
+  "template": {},
+  "target": {
+    "current": "web"
+  },
+  "modules": [
+    {
+      "name": "egret"
+    },
+    {
+      "name": "game"
+    },
+    {
+      "name": "tween"
+    },
+    {
+      "name": "assetsmanager"
+    },
+    {
+      "name": "socket"
+    },
+    {
+      "name": "eui"
+    },
+    {
+      "name": "promise"
+    }
+  ],
+  "targets": {
+    "android": {
+      "appname": "拯救疯狂泡泡鱼",
+      "packagename": "com.companyname"
+    },
+    "ios": {
+      "appname": "拯救疯狂泡泡鱼",
+      "packagename": "com.companyname",
+      "hybrid": false
+    }
+  }
+}

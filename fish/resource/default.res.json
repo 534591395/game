@@ -1,0 +1,45 @@
+{
+	"groups": [
+		{
+			"keys": "orangefish01_png,orangefish02_png,orangefish03_png,orangefish04_png,orangeParticle_png,parallaxBack_jpg,parallaxFront_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/orangefish01.png",
+			"type": "image",
+			"name": "orangefish01_png"
+		},
+		{
+			"url": "assets/orangefish02.png",
+			"type": "image",
+			"name": "orangefish02_png"
+		},
+		{
+			"url": "assets/orangefish03.png",
+			"type": "image",
+			"name": "orangefish03_png"
+		},
+		{
+			"url": "assets/orangefish04.png",
+			"type": "image",
+			"name": "orangefish04_png"
+		},
+		{
+			"url": "assets/orangeParticle.png",
+			"type": "image",
+			"name": "orangeParticle_png"
+		},
+		{
+			"url": "assets/parallaxBack.jpg",
+			"type": "image",
+			"name": "parallaxBack_jpg"
+		},
+		{
+			"url": "assets/parallaxFront.png",
+			"type": "image",
+			"name": "parallaxFront_png"
+		}
+	]
+}
