@@ -2,7 +2,7 @@
  * 游戏开始按钮
  */
 
-class StartBtnView extends eui.Component {
+class TipView extends eui.Component {
     private btn: eui.Image;
     private start: egret.tween.TweenItem;
     private isClick: boolean = false;
@@ -11,7 +11,7 @@ class StartBtnView extends eui.Component {
 
     public constructor() {
         super();
-        this.skinName = "resource/skins/startBtn.exml";
+        this.skinName = "resource/skins/tip.exml";
         this.init();
     }
 

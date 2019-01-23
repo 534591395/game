@@ -201,8 +201,8 @@ class Main extends eui.UILayer {
         this.timerTxt();
         // 初始化开始按钮
         this.bg.start();
-
-        this.addChild(new StartBtnView())
+        this.addChild(new TipView())
+        
 
     }
 
