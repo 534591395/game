@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="loading" width="640" height="700" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image width="445" height="53" x="76" y="165" source="loading_1_png"/>
+	<e:Image width="96" height="34" x="250.5" y="218" source="loading_3_png"/>
+	<e:Image id="loading" width="10" height="33" x="85.5" y="174" source="loading_2_png"/>
+</e:Skin>
