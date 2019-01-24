@@ -29,6 +29,6 @@
 	<e:Group width="640" height="398" x="0" y="1" anchorOffsetX="0" anchorOffsetY="0">
 		<e:Image width="537" height="312" x="50" y="16" source="tip" anchorOffsetY="0" anchorOffsetX="0"/>
 		<e:Image id="btn" width="135" height="38" x="310.5" y="270" anchorOffsetX="59.5" anchorOffsetY="-2" source="startBtn"/>
-		<e:Label id="inner" text="" x="62" y="74" anchorOffsetX="0" width="272" anchorOffsetY="0" height="145"/>
+		<e:Label id="text" text="" x="80" y="77" anchorOffsetX="0" width="473" anchorOffsetY="0" height="169"/>
 	</e:Group>
 </e:Skin>
