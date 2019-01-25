@@ -2,10 +2,12 @@
 ///<reference path="api.d.ts"/>
 
 import * as path from 'path';
-import { UglifyPlugin, CompilePlugin, ManifestPlugin, ExmlPlugin, EmitResConfigFilePlugin, TextureMergerPlugin, CleanPlugin } from 'built-in';
+import { UglifyPlugin, CompilePlugin, ManifestPlugin, ExmlPlugin, EmitResConfigFilePlugin, TextureMergerPlugin, CleanPlugin, ResSplitPlugin, RenamePlugin  } from 'built-in';
 import { WxgamePlugin } from './wxgame/wxgame';
 import { CustomPlugin } from './myplugin';
 import * as defaultConfig from './config';
+
+// https://mp.weixin.qq.com/s/sgelK8QpWbdnOVw84OzSPA 微信小游戏打包发布（静态资源）
 
 const config: ResourceManagerConfig = {
 
@@ -38,6 +40,18 @@ const config: ResourceManagerConfig = {
                         target: "main.min.js"
                     }
                     ]),
+                   // new RenamePlugin({verbose: true, hash: 'crc32', matchers: [{from: "resource/**/**", to: "[path][name]_[hash].[ext]"}]}), 
+                    new ResSplitPlugin({
+                      matchers:[
+                          {from:"resource/**",to:`../${projectName}_wxgame_remote`}
+                      ]
+                    }),
+                    // new EmitResConfigFilePlugin({
+                    //     output: "resource/default.res.json",
+                    //     typeSelector: config.typeSelector,
+                    //     nameSelector: p => path.basename(p).replace(/\./gi, "_"),
+                    //     groupSelector: p => "preload"
+                    // }),
                     new ManifestPlugin({ output: 'manifest.js' })
                 ]
             }

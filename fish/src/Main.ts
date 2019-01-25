@@ -91,10 +91,12 @@ class Main extends eui.UILayer {
         await this.loadResource()
         this.createGameScene();
     }
-
+    //https://mp.weixin.qq.com/s/sgelK8QpWbdnOVw84OzSPA 
     private async loadResource() {
         try {
-            await RES.loadConfig("resource/default.res.json", "resource/");
+            egret.ImageLoader.crossOrigin = 'anonymous';
+            //await RES.loadConfig("default.res.json", "resource/");
+            await RES.loadConfig("default.res.json", "http://10.240.193.59:81/resource/");
             await this.loadTheme();
             await RES.loadGroup("loading", 1);
             const loadingView = new LoadingUI();
