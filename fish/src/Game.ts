@@ -94,6 +94,7 @@ class Game extends egret.DisplayObjectContainer {
         this.scorePanel.showScore(this.delFish);
         // 添加操作界面UI
         this.addChild(this.scorePanel);
+        this.clearFish();
     }
     
     // 开始当前游戏关卡
