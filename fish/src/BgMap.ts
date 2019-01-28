@@ -3,9 +3,8 @@
  */
 
 class BgMap extends egret.DisplayObjectContainer {
-    private timeOnEnterFrame = 0;
     // 滚动速度
-    private bgSpeed:number = 0.5;
+    private bgSpeed:number = 20;
 
     // 图片数量
     private rowCount:number;
@@ -26,10 +25,12 @@ class BgMap extends egret.DisplayObjectContainer {
         this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
         const stageW = this.stage.stageWidth;
         const stageH = this.stage.stageHeight;
+        // 由于背景图片太短了，显示效果不好。故这里纹理高度改成了跟舞台高度一致。
         this.textureHeight = stageH;
         this.rowCount = Math.ceil(stageH/this.textureHeight)+1;
         this.bmpParallaxBackArr = [];
         this.bmpParallaxFrontArr = [];
+        
         for (let i:number = 0; i < this.rowCount; i += 1) {
             let parallaxBack = this.createBitmapByName("parallaxBack_jpg");
             parallaxBack.y = this.textureHeight * i - ( this.textureHeight * this.rowCount - stageH );
@@ -46,7 +47,7 @@ class BgMap extends egret.DisplayObjectContainer {
             this.bmpParallaxFrontArr.push(parallaxFront);
             this.addChild(parallaxFront);
         }
-        this.timeOnEnterFrame = egret.getTimer();
+
     }
 
     private createBitmapByName(name: string) {
@@ -70,11 +71,10 @@ class BgMap extends egret.DisplayObjectContainer {
 
     // 逐帧运动
     private enterFrameHandler(event:egret.Event) {
-        const now = egret.getTimer();
-        const pass = now - this.timeOnEnterFrame;
+        //const now = egret.getTimer();
         for (let i:number = 0; i < this.rowCount; i += 1) {
             let bmpParallaxFront:egret.Bitmap = this.bmpParallaxFrontArr[i];
-            bmpParallaxFront.y += 2 * this.bgSpeed * pass;
+            bmpParallaxFront.y += 2 * this.bgSpeed;
             
             // 判断超出屏幕后，回到队首，这样来实现循环反复
             if (bmpParallaxFront.y > this.stage.stageHeight) {
@@ -85,7 +85,7 @@ class BgMap extends egret.DisplayObjectContainer {
 
 
             let bmpParallaxBack:egret.Bitmap = this.bmpParallaxBackArr[i];
-            bmpParallaxBack.y += this.bgSpeed * pass;
+            bmpParallaxBack.y += this.bgSpeed;
             
             // 判断超出屏幕后，回到队首，这样来实现循环反复
             if (bmpParallaxBack.y > this.stage.stageHeight) {
@@ -94,6 +94,5 @@ class BgMap extends egret.DisplayObjectContainer {
                 this.bmpParallaxBackArr.unshift(bmpParallaxBack);
             }
         }
-        this.timeOnEnterFrame = now;
     }
 }
