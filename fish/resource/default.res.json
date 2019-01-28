@@ -7,6 +7,10 @@
 		{
 			"keys": "loading_1_png,loading_2_png",
 			"name": "loading"
+		},
+		{
+			"keys": "level_2_png,level_1_png,number_1_png,number_2_png,number_3_png,number_4_png,number_5_png,number_6_png,number_7_png,number_8_png,number_9_png",
+			"name": "level"
 		}
 	],
 	"resources": [
@@ -191,9 +195,64 @@
 			"name": "loading_2_png"
 		},
 		{
-			"name": "loading_3_png",
+			"url": "assets/loading/loading_3.png",
 			"type": "image",
-			"url": "assets/loading/loading_3.png"
+			"name": "loading_3_png"
+		},
+		{
+			"url": "assets/level/level_1.png",
+			"type": "image",
+			"name": "level_1_png"
+		},
+		{
+			"url": "assets/level/level_2.png",
+			"type": "image",
+			"name": "level_2_png"
+		},
+		{
+			"url": "assets/level/number_1.png",
+			"type": "image",
+			"name": "number_1_png"
+		},
+		{
+			"url": "assets/level/number_2.png",
+			"type": "image",
+			"name": "number_2_png"
+		},
+		{
+			"url": "assets/level/number_3.png",
+			"type": "image",
+			"name": "number_3_png"
+		},
+		{
+			"url": "assets/level/number_4.png",
+			"type": "image",
+			"name": "number_4_png"
+		},
+		{
+			"url": "assets/level/number_5.png",
+			"type": "image",
+			"name": "number_5_png"
+		},
+		{
+			"url": "assets/level/number_6.png",
+			"type": "image",
+			"name": "number_6_png"
+		},
+		{
+			"url": "assets/level/number_7.png",
+			"type": "image",
+			"name": "number_7_png"
+		},
+		{
+			"url": "assets/level/number_8.png",
+			"type": "image",
+			"name": "number_8_png"
+		},
+		{
+			"url": "assets/level/number_9.png",
+			"type": "image",
+			"name": "number_9_png"
 		}
 	]
 }

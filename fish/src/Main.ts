@@ -33,6 +33,8 @@ class Main extends eui.UILayer {
 
     private game:Game;
 
+    private level:Level;
+
     protected createChildren(): void {
         super.createChildren();
 
@@ -108,6 +110,8 @@ class Main extends eui.UILayer {
         this.game = new Game();
         this.addChild(this.game);
         
+        this.level = new Level();
+        this.addChild(this.level);
     }
 
 }

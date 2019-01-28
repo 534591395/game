@@ -30,6 +30,7 @@
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
+		"resource/skins/level.exml",
 		"resource/skins/loading.exml",
 		"resource/skins/tip.exml"
 	],
