@@ -31,7 +31,7 @@ class Main extends eui.UILayer {
 
     private bg:BgMap;
 
-    private game:Game;
+    
 
     private levelGroup: LevelGroup;
 
@@ -107,13 +107,11 @@ class Main extends eui.UILayer {
         // 初始化开始按钮
         this.bg.start();
         
-        this.game = new Game();
-        // this.addChild(this.game);
-        
         // 关卡网格
         this.levelGroup = new LevelGroup();
         this.addChild(this.levelGroup);
         this.levelGroup.y = 150;
+        this.levelGroup.game.y = -150;
     }
 
 }

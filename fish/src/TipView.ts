@@ -5,7 +5,9 @@
 class TipView extends eui.Component {
     private btn: eui.Image;
     private text: eui.Label;
+    private LevelList: eui.Label;
     private start: egret.tween.TweenItem;
+    private returnLevel: egret.tween.TweenItem;
     private isClick: boolean = false;
 
     public constructor() {
@@ -20,6 +22,7 @@ class TipView extends eui.Component {
 
     private init() {
        const customEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.CompleteAnimation);
+       const returnLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.ReturnLevelAnimation);
        // 点击按钮触发按钮动画效果
        this.btn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
            this.start.play(0);
@@ -27,6 +30,15 @@ class TipView extends eui.Component {
        this.start.addEventListener('complete', () => {
           this.dispatchEvent(customEvent);
        }, this);
+
+       // 点击返回关卡列表
+       this.LevelList.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+           this.returnLevel.play(0);
+       }, this);
+       this.returnLevel.addEventListener('complete', () => {
+          this.dispatchEvent(returnLevelEvent);
+       }, this);
+
     }
 
     public setText(text:string) {

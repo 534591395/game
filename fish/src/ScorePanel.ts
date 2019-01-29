@@ -16,14 +16,25 @@ class ScorePanel extends egret.Sprite {
     }
 
     private render() {
-
         this.tipView = new TipView();
         this.addChild(this.tipView);
 
         this.gameStartEvent = new CustomHandleEvent(CustomHandleEvent.GameStart);
 
         // 监听开始按钮动画
-        this.tipView.addEventListener(CustomHandleEvent.CompleteAnimation, this.gameStartHandle, this);     
+        this.tipView.addEventListener(CustomHandleEvent.CompleteAnimation, this.gameStartHandle, this); 
+
+        // 监听返回关卡列表
+        this.tipView.addEventListener(CustomHandleEvent.ReturnLevelAnimation, this.returnLevel, this);    
+    }
+
+    private returnLevel() {
+        const returnLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.ReturnLevel);
+        this.dispatchEvent(returnLevelEvent);
+    }
+
+    public setOriginNum(originNum:number = 30) {
+        this.originNum = originNum;
     }
 
     public showScore(value:number) {

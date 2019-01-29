@@ -25,10 +25,35 @@
 				</tween:To>
 			</tween:TweenItem>
 		</tween:TweenGroup>
+		<tween:TweenGroup id="returnLevel">
+			<tween:TweenItem target="{LevelList}">
+				<tween:Set>
+					<tween:props>
+						<e:Object scaleX="{1}" scaleY="{1}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:To duration="150">
+					<tween:props>
+						<e:Object scaleX="{0.9}" scaleY="{0.9}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="200">
+					<tween:props>
+						<e:Object scaleX="{1.1}" scaleY="{1.1}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="150">
+					<tween:props>
+						<e:Object scaleX="{1}" scaleY="{1}"/>
+					</tween:props>
+				</tween:To>
+			</tween:TweenItem>
+		</tween:TweenGroup>
 	</w:Declarations>
 	<e:Group width="640" height="398" x="0" y="1" anchorOffsetX="0" anchorOffsetY="0">
 		<e:Image width="537" height="312" x="50" y="16" source="tip" anchorOffsetY="0" anchorOffsetX="0"/>
 		<e:Image id="btn" width="135" height="38" x="310.5" y="270" anchorOffsetX="59.5" anchorOffsetY="-2" source="startBtn"/>
 		<e:Label id="text" text="" x="80" y="77" anchorOffsetX="0" width="473" anchorOffsetY="0" height="169"/>
+		<e:Label id="LevelList" text="返回关卡" x="79" y="33" fontFamily="KaiTi"/>
 	</e:Group>
 </e:Skin>

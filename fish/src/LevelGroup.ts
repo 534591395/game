@@ -15,12 +15,24 @@ class LevelGroup extends egret.DisplayObjectContainer {
     // 头部文案
     private txt:egret.TextField;
 
+    // 游戏主逻辑
+    public game:Game;
+
     constructor(levelNum:number = 9, unlock:number[] = [1]) {
         super();
         this.levelNum = levelNum;
         this.unlock = unlock;
         this.myGroup = new eui.Group();
+        this.game = new Game();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.render, this);
+        this.game.addEventListener(CustomHandleEvent.ReturnLevel, this.returnLevel, this);
+    }
+
+    // 点击返回关卡后，显示关卡
+    private returnLevel() {
+        this.addChild(this.myGroup);
+        this.addChild(this.txt);
+        this.removeChild(this.game);
     }
 
     private textField() {
@@ -44,9 +56,12 @@ class LevelGroup extends egret.DisplayObjectContainer {
             let num = i+1;
             if (this.unlock.indexOf(num) > -1) {
                 level = new Level(false, num);
+                // 触发选择关卡自定义事件
+                level.addEventListener(CustomHandleEvent.ChoiceLevel, this.gameStartHandle, this);
             } else {
                 level = new Level(true, num);
             }
+            
              
             this.levels.push(level);
             this.myGroup.addChild(level);
@@ -89,5 +104,12 @@ class LevelGroup extends egret.DisplayObjectContainer {
                 level.render();
             }
         });
+    }
+
+    private gameStartHandle(evt:CustomHandleEvent) {
+        this.game.levelChange(evt.levelNum);
+        this.removeChild(this.myGroup);
+        this.removeChild(this.txt);
+        this.addChild(this.game);
     }
 }

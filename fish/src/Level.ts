@@ -46,11 +46,13 @@ class Level extends eui.Component {
     }
 
     private animateEvent() {
+       const customEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.ChoiceLevel);
        this.level_unlock.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
            this.level.play(0);
        }, this);
-       this.level_unlock.addEventListener('complete', () => {
-          
+       this.level.addEventListener('complete', () => {
+          customEvent.levelNum = this.number;
+          this.dispatchEvent(customEvent);
        }, this);
 
        this.level_lock.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {

@@ -27,10 +27,26 @@ class Game extends egret.DisplayObjectContainer {
     private fishEmitter:FishEmitter;
     // UI面板
     private scorePanel:ScorePanel;
+    // 难度等级
+    private level:number = 1;
+    // 泡泡鱼往上移动的速率控制
+    private gravity:number = -0.2;
+    // 规定时间内需达到的分数
+    private originNum:number = 30;
 
     public constructor() {
         super();
         this.render();
+    }
+
+    // 关卡调整
+    public levelChange(level:number = 1) {
+        this.level = level;
+        this.timeNum = 20;
+        this.gravity = -0.2;
+        this.timeNum = this.timeNum - (this.level -1);
+        this.gravity = this.gravity + (- this.level/ 10);
+        this.scorePanel.setOriginNum(30+this.level);
     }
 
     private render() {
@@ -40,6 +56,7 @@ class Game extends egret.DisplayObjectContainer {
         this.pannelUI();
         this.gameTimer();
         this.TxtTimer();
+        
     }
     
     // 操作以及提示面板
@@ -53,6 +70,14 @@ class Game extends egret.DisplayObjectContainer {
         this.scorePanel.showStart();
         // 监听触发游戏开始
         this.scorePanel.addEventListener(CustomHandleEvent.GameStart, this.gameStart, this);
+        // 监听返回关卡列表
+        this.scorePanel.addEventListener(CustomHandleEvent.ReturnLevel, this.returnLevel, this);
+    }
+
+    // 返回关卡
+    private returnLevel() {
+        const returnLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.ReturnLevel);
+        this.dispatchEvent(returnLevelEvent);
     }
 
     // 游戏计时器（倒计时）
@@ -176,7 +201,7 @@ class Game extends egret.DisplayObjectContainer {
         // 缩放比
         fish.size = 1;
         // 重力加速度
-        fish.gravity = -0.3;
+        fish.gravity = this.gravity;
     }
 
     // 泡泡鱼爆炸（粒子效果）
