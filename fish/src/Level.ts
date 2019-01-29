@@ -14,9 +14,12 @@ class Level extends eui.Component {
    // 锁住的关卡按钮动画
    private lock: egret.tween.TweenItem;
    // 当前关卡是否锁住
-   private isLock: boolean = true;
+   public isLock: boolean = true;
    // 当前关卡等级
-   private number: number;
+   public number: number;
+   // 当前关卡的宽度
+   public width: number;
+   public height: number;
 
 
     constructor(isLock: boolean, number: number) {
@@ -24,19 +27,22 @@ class Level extends eui.Component {
         this.skinName = "resource/skins/level.exml";
         this.isLock = isLock;
         this.number = number;
-        this.init();
+        this.width = this.level_lock.width;
+        this.height = this.level_lock.height;
+        this.render();
+        this.animateEvent();
     }
 
-    private init() {
+    public render() {
         if (this.isLock) {
             this.level_lock.visible = true;
-            this.level_unlock.visible = false;
+            this.level_unlock.visible = false;   
         } else {
             this.level_unlock.visible = true;
             this.level_lock.visible = false;
+            // 显示被解锁的关卡等级
+            this.level_id.source = 'number_'+ this.number +'_png';
         }
-        console.log(this.level_unlock)
-        this.animateEvent();
     }
 
     private animateEvent() {

@@ -33,12 +33,7 @@ class Main extends eui.UILayer {
 
     private game:Game;
 
-    private levels:Level[] = [];
-    
-    // 关卡数量
-    private levelNum:number = 3;
-    // 已解锁的关卡
-    public unlock:number[] = [1];
+    private levelGroup: LevelGroup;
 
     protected createChildren(): void {
         super.createChildren();
@@ -113,24 +108,12 @@ class Main extends eui.UILayer {
         this.bg.start();
         
         this.game = new Game();
-        this.addChild(this.game);
+        // this.addChild(this.game);
         
-        this.level();
-    }
-
-    // 关卡， 设置位置
-    private level() {
-        for (let i = 0; i < this.levelNum; i += 1) {
-            let level;
-            let num = i+1;
-            if (this.unlock.indexOf(num) > -1) {
-                level = new Level(false, num);
-            } else {
-                level = new Level(true, num);
-            }
-            this.levels.push(level);
-            this.addChild(level);
-        }
+        // 关卡网格
+        this.levelGroup = new LevelGroup();
+        this.addChild(this.levelGroup);
+        this.levelGroup.y = 200;
     }
 
 }
