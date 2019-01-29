@@ -12,6 +12,8 @@ class LevelGroup extends egret.DisplayObjectContainer {
     public unlock:number[] = [1];
     // 一行排版3个
     private rowNum:number = 3;
+    // 头部文案
+    private txt:egret.TextField;
 
     constructor(levelNum:number = 9, unlock:number[] = [1]) {
         super();
@@ -21,32 +23,22 @@ class LevelGroup extends egret.DisplayObjectContainer {
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.render, this);
     }
 
-    private render() {
-        this.myGroup.width = this.stage.stageWidth;
-        this.myGroup.height = 400;
-        
-        const stageWidth = this.stage.stageWidth;
-        const unitNum = stageWidth / this.rowNum;
-        const top = 50;
-        // 当前的行数
-        let row = 0;
-        let offset = 0;
-        let width = 0;
-        // 网格布局
-        let tLayout:eui.TileLayout = new eui.TileLayout();
-        tLayout.horizontalGap = 0;
-        tLayout.verticalGap = 0;
-        tLayout.columnAlign = eui.ColumnAlign.JUSTIFY_USING_WIDTH;
-        tLayout.rowAlign = eui.RowAlign.JUSTIFY_USING_HEIGHT;
-        // horizontalAlign 设置水平对齐方式， 居中
-        tLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
-        tLayout.paddingTop = 0;
-        tLayout.paddingRight = 0;
-        tLayout.paddingLeft = 0;
-        tLayout.paddingBottom = 10;
-        tLayout.requestedColumnCount = this.rowNum;  /// 设置两列显示
-        this.myGroup.layout = tLayout;    /// 网格布局
+    private textField() {
+        this.txt = new egret.TextField();
+        this.txt.width = this.stage.stageWidth;
+        this.txt.height = 200;
+        this.txt.textAlign = "center";
+        this.txt.textColor = 0xFFFFFF;
+        this.txt.size = 40;
+        this.txt.y = 0;
+        this.txt.text="关卡选择";
+        this.addChild(this.txt);
+    }
 
+    private render() {
+        this.textField();
+        this.tLayout();
+        // 设置每个关卡属性
         for (let i = 0; i < this.levelNum; i += 1) {
             let level;
             let num = i+1;
@@ -61,6 +53,27 @@ class LevelGroup extends egret.DisplayObjectContainer {
         }
 
         this.addChild(this.myGroup);
+    }
+
+    // 设置网格布局
+    private tLayout() {
+        this.myGroup.width = this.stage.stageWidth;
+        this.myGroup.height = 400;
+        // 网格布局
+        let tLayout:eui.TileLayout = new eui.TileLayout();
+        tLayout.horizontalGap = 0;
+        tLayout.verticalGap = 0;
+        tLayout.columnAlign = eui.ColumnAlign.JUSTIFY_USING_WIDTH;
+        tLayout.rowAlign = eui.RowAlign.JUSTIFY_USING_HEIGHT;
+        // horizontalAlign 设置水平对齐方式， 居中
+        tLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
+        tLayout.paddingTop = 0;
+        tLayout.paddingRight = 0;
+        tLayout.paddingLeft = 0;
+        tLayout.paddingBottom = 10;
+        tLayout.requestedColumnCount = this.rowNum;  /// 设置两列显示
+        this.myGroup.layout = tLayout;
+        this.myGroup.y = 80;  
     }
 
     // 设置解锁的关卡

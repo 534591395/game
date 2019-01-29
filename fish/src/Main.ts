@@ -113,7 +113,7 @@ class Main extends eui.UILayer {
         // 关卡网格
         this.levelGroup = new LevelGroup();
         this.addChild(this.levelGroup);
-        this.levelGroup.y = 200;
+        this.levelGroup.y = 150;
     }
 
 }
