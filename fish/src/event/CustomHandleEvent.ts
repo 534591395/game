@@ -14,6 +14,8 @@ class CustomHandleEvent extends egret.Event {
     // 返回关卡列表
     public static ReturnLevel:string = '返回关卡';
     public static ReturnLevelAnimation:string = '返回关卡';
+    // 点击进入游戏下一关
+    public static NextLevel:string = '进入下一关';
     public constructor(type:string, bubbles:boolean=false, cancelable:boolean=false) {
         super(type, bubbles, cancelable);
     }

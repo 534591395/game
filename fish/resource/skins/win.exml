@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="win" width="400" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:tween="egret.tween.*">
+<e:Skin class="win" width="640" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:tween="egret.tween.*">
 	<w:Declarations>
 		<tween:TweenGroup id="winTextAnimation">
 			<tween:TweenItem target="{label}">
@@ -20,32 +20,76 @@
 				</tween:To>
 			</tween:TweenItem>
 		</tween:TweenGroup>
-		<tween:TweenGroup id="nextAnimation">
+		<tween:TweenGroup id="nextShowAnimation">
 			<tween:TweenItem target="{next}">
 				<tween:Set>
 					<tween:props>
-						<e:Object alpha="{0}" y="{10}"/>
+						<e:Object y="{10}" alpha="{0}"/>
 					</tween:props>
 				</tween:Set>
 				<tween:To duration="200">
 					<tween:props>
-						<e:Object scaleX="{0.9}" scaleY="{0.9}" alpha="{0.5}" y="{100}"/>
+						<e:Object y="{100}" alpha="{0.5}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="250">
+					<tween:props>
+						<e:Object alpha="{1}" y="{216}"/>
+					</tween:props>
+				</tween:To>
+			</tween:TweenItem>
+		</tween:TweenGroup>
+		<tween:TweenGroup id="nextAnimation">
+			<tween:TweenItem target="{next}">
+				<tween:Set>
+					<tween:props>
+						<e:Object scaleX="{1}" scaleY="{1}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:To duration="150">
+					<tween:props>
+						<e:Object scaleX="{0.9}" scaleY="{0.9}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="150">
+					<tween:props>
+						<e:Object scaleX="{1.1}" scaleY="{1.1}"/>
 					</tween:props>
 				</tween:To>
 				<tween:To duration="200">
 					<tween:props>
-						<e:Object scaleX="{1.1}" scaleY="{1.1}" alpha="{0.8}" y="{150}"/>
+						<e:Object scaleX="{1}" scaleY="{1}"/>
 					</tween:props>
 				</tween:To>
-				<tween:To duration="200">
+			</tween:TweenItem>
+		</tween:TweenGroup>
+		<tween:TweenGroup id="returnLevel">
+			<tween:TweenItem target="{LevelList}">
+				<tween:Set>
 					<tween:props>
-						<e:Object scaleX="{1}" scaleY="{1}" y="{180}"/>
+						<e:Object scaleX="{1}" scaleY="{1}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:To duration="150">
+					<tween:props>
+						<e:Object scaleX="{0.9}" scaleY="{0.9}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="150">
+					<tween:props>
+						<e:Object scaleX="{1.1}" scaleY="{1.1}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="150">
+					<tween:props>
+						<e:Object scaleX="{1}" scaleY="{1}"/>
 					</tween:props>
 				</tween:To>
 			</tween:TweenItem>
 		</tween:TweenGroup>
 	</w:Declarations>
-	<e:Image source="win_png" x="22" y="13"/>
-	<e:Label id="label" text="恭喜您，通过当前关卡" x="161.5" y="91" width="317" height="59" anchorOffsetX="120" italic="true" verticalAlign="middle" bold="true" anchorOffsetY="0"/>
-	<e:Image id="next" source="next_png" y="190" anchorOffsetX="67.5" horizontalCenter="0"/>
+	<e:Image source="win_png" y="0" horizontalCenter="0" width="500" height="300"/>
+	<e:Label id="label" text="恭喜您，通过当前关卡" y="91" width="317" height="59" anchorOffsetX="120" italic="true" verticalAlign="middle" bold="true" anchorOffsetY="0" horizontalCenter="0"/>
+	<e:Image id="next" source="next_png" y="216" anchorOffsetX="67.5" horizontalCenter="0.5" height="50" width="180"/>
+	<e:Label id="LevelList" text="返回关卡" x="454" y="183" size="25" textColor="0xf4eded" bold="true"/>
 </e:Skin>

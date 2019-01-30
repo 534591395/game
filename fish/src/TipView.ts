@@ -38,7 +38,6 @@ class TipView extends eui.Component {
        this.returnLevel.addEventListener('complete', () => {
           this.dispatchEvent(returnLevelEvent);
        }, this);
-
     }
 
     public setText(text:string) {
