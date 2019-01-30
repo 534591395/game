@@ -40,6 +40,11 @@ class ScorePanel extends egret.Sprite {
         const returnLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.ReturnLevel);
         this.dispatchEvent(returnLevelEvent);
     }
+    // 发起更新通关信息
+    private updateLevel() {
+        const updateLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.UpdateLevel);
+        this.dispatchEvent(updateLevelEvent);
+    }
     // 设置当前关卡目标（分数）
     public setOriginNum(originNum:number = 30) {
         this.originNum = originNum;
@@ -55,6 +60,8 @@ class ScorePanel extends egret.Sprite {
         }
         // 通关显示通关UI
         if (this.win) {
+            // 更新通关关卡信息
+            this.updateLevel();
             this.nextUI.enterAnimation();
             this.addChild(this.nextUI);
             try {
@@ -78,7 +85,7 @@ class ScorePanel extends egret.Sprite {
         } catch (error) {}
         this.addChild(this.tipView);
     }
-
+    // 推送游戏开始事件
     private gameStartHandle() {
         this.dispatchEvent(this.gameStartEvent);
     }
@@ -92,7 +99,7 @@ class ScorePanel extends egret.Sprite {
         this.nextUI.addEventListener(CustomHandleEvent.ReturnLevelAnimation, this.returnLevel, this); 
     }
 
-    // 下一关
+    // 监听回调，下一关
     private nextLevel() {
         const nextLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.NextLevel);
         this.dispatchEvent(nextLevelEvent);

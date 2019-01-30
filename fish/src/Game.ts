@@ -58,7 +58,6 @@ class Game extends egret.DisplayObjectContainer {
         this.pannelUI();
         this.gameTimer();
         this.TxtTimer();
-        
     }
     
     // 操作以及提示面板
@@ -72,13 +71,31 @@ class Game extends egret.DisplayObjectContainer {
         this.scorePanel.addEventListener(CustomHandleEvent.GameStart, this.gameStart, this);
         // 监听返回关卡列表
         this.scorePanel.addEventListener(CustomHandleEvent.ReturnLevel, this.returnLevel, this);
+        // 监听关卡更新信息
+        this.scorePanel.addEventListener(CustomHandleEvent.UpdateLevel, this.updateLevel, this);
+        // 监听游戏进入下一关事件
+        this.scorePanel.addEventListener(CustomHandleEvent.NextLevel, this.nextLevel, this);
     }
-
-    // 返回关卡
+    // 监听回调，发起更新通关信息
+    private updateLevel() {
+        const updateLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.UpdateLevel);
+        // this.level 表示当前通关的关卡，通关后，通知 levelGroup 类，更新已通关的关卡
+        updateLevelEvent.levelNum = this.level + 1;
+        console.log('发起更新通关关卡', this.level + 1);
+        this.dispatchEvent(updateLevelEvent);
+    }
+    // 监听回调，返回关卡
     private returnLevel() {
         const returnLevelEvent:CustomHandleEvent = new CustomHandleEvent(CustomHandleEvent.ReturnLevel);
         this.dispatchEvent(returnLevelEvent);
     }
+    //监听回调，当前游戏进入下一关
+    private nextLevel(evt:CustomHandleEvent) {
+        const num = this.level + 1;
+        this.levelChange(num);
+        console.log('下一关关卡'+num);
+    }
+    
 
     // 游戏计时器（倒计时）
     private gameTimer() {
@@ -131,8 +148,10 @@ class Game extends egret.DisplayObjectContainer {
         this.timer.reset();
         // 开始关卡倒计时
         this.timer.start();
-        // 游戏开始后，移除操作界面UI
-        this.removeChild(this.scorePanel);
+        try {
+            // 游戏开始后，移除操作界面UI
+            this.removeChild(this.scorePanel);
+        } catch (error) {}
         // 开始监听帧率，不断在界面上生成泡泡鱼
         this.addEventListener(egret.Event.ENTER_FRAME, this.onGameLoop, this);
     }

@@ -25,10 +25,16 @@ class LevelGroup extends egret.DisplayObjectContainer {
         this.myGroup = new eui.Group();
         this.game = new Game();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.render, this);
+        // 监听返回关卡列表
         this.game.addEventListener(CustomHandleEvent.ReturnLevel, this.returnLevel, this);
+        // 监听关卡更新信息
+        this.game.addEventListener(CustomHandleEvent.UpdateLevel, this.updateLevel, this);
     }
-
-    // 点击返回关卡后，显示关卡
+    // 监听回调，更新通关信息
+    private updateLevel(evt:CustomHandleEvent) {
+        this.unlockLevel(evt.levelNum);
+    }
+    // 监听回调，点击返回关卡后，显示关卡
     private returnLevel() {
         this.addChild(this.myGroup);
         this.addChild(this.txt);
@@ -61,8 +67,6 @@ class LevelGroup extends egret.DisplayObjectContainer {
             } else {
                 level = new Level(true, num);
             }
-            
-             
             this.levels.push(level);
             this.myGroup.addChild(level);
         }
@@ -99,13 +103,18 @@ class LevelGroup extends egret.DisplayObjectContainer {
         this.levels.map((level, i) => {
             // 解锁
             if (this.unlock.indexOf(i+1) > -1) {
-                level.isLock = false;
-                level.number = i+1;
-                level.render();
+                // 之前未解锁的，才修改属性。
+                if (level.isLock) {
+                    level.isLock = false;
+                    level.number = i+1;
+                    level.render();
+                    // 触发选择关卡自定义事件
+                    level.addEventListener(CustomHandleEvent.ChoiceLevel, this.gameStartHandle, this);
+                }
             }
         });
     }
-
+    // 监听回调，选择某个关卡
     private gameStartHandle(evt:CustomHandleEvent) {
         this.game.levelChange(evt.levelNum);
         this.removeChild(this.myGroup);
