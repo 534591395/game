@@ -632,6 +632,208 @@ window.skins={};
 		return t;
 	};
 	return VSliderSkin;
+})(eui.Skin);generateEUI.paths['resource/skins/level.exml'] = window.level = (function (_super) {
+	__extends(level, _super);
+	function level() {
+		_super.call(this);
+		this.skinParts = ["level","lock","image","level_id","level_unlock","level_lock"];
+		
+		this.height = 400;
+		this.width = 640;
+		this.level_i();
+		this.lock_i();
+		this.elementsContent = [this.level_unlock_i(),this.level_lock_i()];
+		
+		eui.Binding.$bindProperties(this, ["level_unlock"],[0],this._TweenItem1,"target");
+		eui.Binding.$bindProperties(this, [1],[],this._Object1,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object1,"scaleY");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object2,"scaleX");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object2,"scaleY");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object3,"scaleX");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object3,"scaleY");
+		eui.Binding.$bindProperties(this, [1],[],this._Object4,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object4,"scaleY");
+		eui.Binding.$bindProperties(this, ["level_lock"],[0],this._TweenItem2,"target");
+		eui.Binding.$bindProperties(this, [1],[],this._Object5,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object5,"scaleY");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object6,"scaleX");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object6,"scaleY");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object7,"scaleX");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object7,"scaleY");
+		eui.Binding.$bindProperties(this, [1],[],this._Object8,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object8,"scaleY");
+	}
+	var _proto = level.prototype;
+
+	_proto.level_i = function () {
+		var t = new egret.tween.TweenGroup();
+		this.level = t;
+		t.items = [this._TweenItem1_i()];
+		return t;
+	};
+	_proto._TweenItem1_i = function () {
+		var t = new egret.tween.TweenItem();
+		this._TweenItem1 = t;
+		t.paths = [this._Set1_i(),this._To1_i(),this._To2_i(),this._To3_i()];
+		return t;
+	};
+	_proto._Set1_i = function () {
+		var t = new egret.tween.Set();
+		t.props = this._Object1_i();
+		return t;
+	};
+	_proto._Object1_i = function () {
+		var t = {};
+		this._Object1 = t;
+		return t;
+	};
+	_proto._To1_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object2_i();
+		return t;
+	};
+	_proto._Object2_i = function () {
+		var t = {};
+		this._Object2 = t;
+		return t;
+	};
+	_proto._To2_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object3_i();
+		return t;
+	};
+	_proto._Object3_i = function () {
+		var t = {};
+		this._Object3 = t;
+		return t;
+	};
+	_proto._To3_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object4_i();
+		return t;
+	};
+	_proto._Object4_i = function () {
+		var t = {};
+		this._Object4 = t;
+		return t;
+	};
+	_proto.lock_i = function () {
+		var t = new egret.tween.TweenGroup();
+		this.lock = t;
+		t.items = [this._TweenItem2_i()];
+		return t;
+	};
+	_proto._TweenItem2_i = function () {
+		var t = new egret.tween.TweenItem();
+		this._TweenItem2 = t;
+		t.paths = [this._Set2_i(),this._To4_i(),this._To5_i(),this._To6_i()];
+		return t;
+	};
+	_proto._Set2_i = function () {
+		var t = new egret.tween.Set();
+		t.props = this._Object5_i();
+		return t;
+	};
+	_proto._Object5_i = function () {
+		var t = {};
+		this._Object5 = t;
+		return t;
+	};
+	_proto._To4_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object6_i();
+		return t;
+	};
+	_proto._Object6_i = function () {
+		var t = {};
+		this._Object6 = t;
+		return t;
+	};
+	_proto._To5_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 200;
+		t.props = this._Object7_i();
+		return t;
+	};
+	_proto._Object7_i = function () {
+		var t = {};
+		this._Object7 = t;
+		return t;
+	};
+	_proto._To6_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object8_i();
+		return t;
+	};
+	_proto._Object8_i = function () {
+		var t = {};
+		this._Object8 = t;
+		return t;
+	};
+	_proto.level_unlock_i = function () {
+		var t = new eui.Group();
+		this.level_unlock = t;
+		t.anchorOffsetX = 65;
+		t.anchorOffsetY = 0;
+		t.height = 100;
+		t.visible = false;
+		t.width = 130;
+		t.x = 65;
+		t.y = 0;
+		t.elementsContent = [this.image_i(),this.level_id_i()];
+		return t;
+	};
+	_proto.image_i = function () {
+		var t = new eui.Image();
+		this.image = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 100;
+		t.source = "level_1_png";
+		t.width = 130;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.level_id_i = function () {
+		var t = new eui.Image();
+		this.level_id = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 52;
+		t.source = "number_1_png";
+		t.width = 73;
+		t.x = 22.5;
+		t.y = 22;
+		return t;
+	};
+	_proto.level_lock_i = function () {
+		var t = new eui.Group();
+		this.level_lock = t;
+		t.anchorOffsetX = 65;
+		t.height = 100;
+		t.visible = false;
+		t.width = 130;
+		t.x = 65;
+		t.y = 0;
+		t.elementsContent = [this._Image1_i()];
+		return t;
+	};
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.height = 100;
+		t.source = "level_2_png";
+		t.width = 130;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	return level;
 })(eui.Skin);generateEUI.paths['resource/skins/loading.exml'] = window.loading = (function (_super) {
 	__extends(loading, _super);
 	function loading() {
@@ -677,11 +879,12 @@ window.skins={};
 	__extends(startBtn, _super);
 	function startBtn() {
 		_super.call(this);
-		this.skinParts = ["start","btn","text"];
+		this.skinParts = ["start","returnLevel","btn","text","LevelList"];
 		
 		this.height = 400;
 		this.width = 640;
 		this.start_i();
+		this.returnLevel_i();
 		this.elementsContent = [this._Group1_i()];
 		
 		eui.Binding.$bindProperties(this, ["btn"],[0],this._TweenItem1,"target");
@@ -693,6 +896,15 @@ window.skins={};
 		eui.Binding.$bindProperties(this, [1.1],[],this._Object3,"scaleY");
 		eui.Binding.$bindProperties(this, [1],[],this._Object4,"scaleX");
 		eui.Binding.$bindProperties(this, [1],[],this._Object4,"scaleY");
+		eui.Binding.$bindProperties(this, ["LevelList"],[0],this._TweenItem2,"target");
+		eui.Binding.$bindProperties(this, [1],[],this._Object5,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object5,"scaleY");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object6,"scaleX");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object6,"scaleY");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object7,"scaleX");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object7,"scaleY");
+		eui.Binding.$bindProperties(this, [1],[],this._Object8,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object8,"scaleY");
 	}
 	var _proto = startBtn.prototype;
 
@@ -752,6 +964,61 @@ window.skins={};
 		this._Object4 = t;
 		return t;
 	};
+	_proto.returnLevel_i = function () {
+		var t = new egret.tween.TweenGroup();
+		this.returnLevel = t;
+		t.items = [this._TweenItem2_i()];
+		return t;
+	};
+	_proto._TweenItem2_i = function () {
+		var t = new egret.tween.TweenItem();
+		this._TweenItem2 = t;
+		t.paths = [this._Set1_i(),this._To5_i(),this._To6_i(),this._To7_i()];
+		return t;
+	};
+	_proto._Set1_i = function () {
+		var t = new egret.tween.Set();
+		t.props = this._Object5_i();
+		return t;
+	};
+	_proto._Object5_i = function () {
+		var t = {};
+		this._Object5 = t;
+		return t;
+	};
+	_proto._To5_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object6_i();
+		return t;
+	};
+	_proto._Object6_i = function () {
+		var t = {};
+		this._Object6 = t;
+		return t;
+	};
+	_proto._To6_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 200;
+		t.props = this._Object7_i();
+		return t;
+	};
+	_proto._Object7_i = function () {
+		var t = {};
+		this._Object7 = t;
+		return t;
+	};
+	_proto._To7_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object8_i();
+		return t;
+	};
+	_proto._Object8_i = function () {
+		var t = {};
+		this._Object8 = t;
+		return t;
+	};
 	_proto._Group1_i = function () {
 		var t = new eui.Group();
 		t.anchorOffsetX = 0;
@@ -760,7 +1027,7 @@ window.skins={};
 		t.width = 640;
 		t.x = 0;
 		t.y = 1;
-		t.elementsContent = [this._Image1_i(),this.btn_i(),this.text_i()];
+		t.elementsContent = [this._Image1_i(),this.btn_i(),this.text_i(),this.LevelList_i()];
 		return t;
 	};
 	_proto._Image1_i = function () {
@@ -798,5 +1065,311 @@ window.skins={};
 		t.y = 77;
 		return t;
 	};
+	_proto.LevelList_i = function () {
+		var t = new eui.Label();
+		this.LevelList = t;
+		t.fontFamily = "KaiTi";
+		t.text = "返回关卡";
+		t.x = 79;
+		t.y = 33;
+		return t;
+	};
 	return startBtn;
+})(eui.Skin);generateEUI.paths['resource/skins/win.exml'] = window.win = (function (_super) {
+	__extends(win, _super);
+	function win() {
+		_super.call(this);
+		this.skinParts = ["winTextAnimation","nextShowAnimation","nextAnimation","returnLevel","label","next","LevelList"];
+		
+		this.height = 300;
+		this.width = 640;
+		this.winTextAnimation_i();
+		this.nextShowAnimation_i();
+		this.nextAnimation_i();
+		this.returnLevel_i();
+		this.elementsContent = [this._Image1_i(),this.label_i(),this.next_i(),this.LevelList_i()];
+		
+		eui.Binding.$bindProperties(this, ["label"],[0],this._TweenItem1,"target");
+		eui.Binding.$bindProperties(this, [0],[],this._Object1,"alpha");
+		eui.Binding.$bindProperties(this, [1],[],this._Object1,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object1,"scaleY");
+		eui.Binding.$bindProperties(this, [0.5],[],this._Object2,"alpha");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object2,"scaleX");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object2,"scaleY");
+		eui.Binding.$bindProperties(this, [1],[],this._Object3,"alpha");
+		eui.Binding.$bindProperties(this, [1],[],this._Object3,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object3,"scaleY");
+		eui.Binding.$bindProperties(this, ["next"],[0],this._TweenItem2,"target");
+		eui.Binding.$bindProperties(this, [0],[],this._Object4,"alpha");
+		eui.Binding.$bindProperties(this, [10],[],this._Object4,"y");
+		eui.Binding.$bindProperties(this, [0.5],[],this._Object5,"alpha");
+		eui.Binding.$bindProperties(this, [100],[],this._Object5,"y");
+		eui.Binding.$bindProperties(this, [1],[],this._Object6,"alpha");
+		eui.Binding.$bindProperties(this, [216],[],this._Object6,"y");
+		eui.Binding.$bindProperties(this, ["next"],[0],this._TweenItem3,"target");
+		eui.Binding.$bindProperties(this, [1],[],this._Object7,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object7,"scaleY");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object8,"scaleX");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object8,"scaleY");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object9,"scaleX");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object9,"scaleY");
+		eui.Binding.$bindProperties(this, [1],[],this._Object10,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object10,"scaleY");
+		eui.Binding.$bindProperties(this, ["LevelList"],[0],this._TweenItem4,"target");
+		eui.Binding.$bindProperties(this, [1],[],this._Object11,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object11,"scaleY");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object12,"scaleX");
+		eui.Binding.$bindProperties(this, [0.9],[],this._Object12,"scaleY");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object13,"scaleX");
+		eui.Binding.$bindProperties(this, [1.1],[],this._Object13,"scaleY");
+		eui.Binding.$bindProperties(this, [1],[],this._Object14,"scaleX");
+		eui.Binding.$bindProperties(this, [1],[],this._Object14,"scaleY");
+	}
+	var _proto = win.prototype;
+
+	_proto.winTextAnimation_i = function () {
+		var t = new egret.tween.TweenGroup();
+		this.winTextAnimation = t;
+		t.items = [this._TweenItem1_i()];
+		return t;
+	};
+	_proto._TweenItem1_i = function () {
+		var t = new egret.tween.TweenItem();
+		this._TweenItem1 = t;
+		t.paths = [this._Set1_i(),this._To1_i(),this._To2_i()];
+		return t;
+	};
+	_proto._Set1_i = function () {
+		var t = new egret.tween.Set();
+		t.props = this._Object1_i();
+		return t;
+	};
+	_proto._Object1_i = function () {
+		var t = {};
+		this._Object1 = t;
+		return t;
+	};
+	_proto._To1_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 200;
+		t.props = this._Object2_i();
+		return t;
+	};
+	_proto._Object2_i = function () {
+		var t = {};
+		this._Object2 = t;
+		return t;
+	};
+	_proto._To2_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 200;
+		t.props = this._Object3_i();
+		return t;
+	};
+	_proto._Object3_i = function () {
+		var t = {};
+		this._Object3 = t;
+		return t;
+	};
+	_proto.nextShowAnimation_i = function () {
+		var t = new egret.tween.TweenGroup();
+		this.nextShowAnimation = t;
+		t.items = [this._TweenItem2_i()];
+		return t;
+	};
+	_proto._TweenItem2_i = function () {
+		var t = new egret.tween.TweenItem();
+		this._TweenItem2 = t;
+		t.paths = [this._Set2_i(),this._To3_i(),this._To4_i()];
+		return t;
+	};
+	_proto._Set2_i = function () {
+		var t = new egret.tween.Set();
+		t.props = this._Object4_i();
+		return t;
+	};
+	_proto._Object4_i = function () {
+		var t = {};
+		this._Object4 = t;
+		return t;
+	};
+	_proto._To3_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 200;
+		t.props = this._Object5_i();
+		return t;
+	};
+	_proto._Object5_i = function () {
+		var t = {};
+		this._Object5 = t;
+		return t;
+	};
+	_proto._To4_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 250;
+		t.props = this._Object6_i();
+		return t;
+	};
+	_proto._Object6_i = function () {
+		var t = {};
+		this._Object6 = t;
+		return t;
+	};
+	_proto.nextAnimation_i = function () {
+		var t = new egret.tween.TweenGroup();
+		this.nextAnimation = t;
+		t.items = [this._TweenItem3_i()];
+		return t;
+	};
+	_proto._TweenItem3_i = function () {
+		var t = new egret.tween.TweenItem();
+		this._TweenItem3 = t;
+		t.paths = [this._Set3_i(),this._To5_i(),this._To6_i(),this._To7_i()];
+		return t;
+	};
+	_proto._Set3_i = function () {
+		var t = new egret.tween.Set();
+		t.props = this._Object7_i();
+		return t;
+	};
+	_proto._Object7_i = function () {
+		var t = {};
+		this._Object7 = t;
+		return t;
+	};
+	_proto._To5_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object8_i();
+		return t;
+	};
+	_proto._Object8_i = function () {
+		var t = {};
+		this._Object8 = t;
+		return t;
+	};
+	_proto._To6_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object9_i();
+		return t;
+	};
+	_proto._Object9_i = function () {
+		var t = {};
+		this._Object9 = t;
+		return t;
+	};
+	_proto._To7_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 200;
+		t.props = this._Object10_i();
+		return t;
+	};
+	_proto._Object10_i = function () {
+		var t = {};
+		this._Object10 = t;
+		return t;
+	};
+	_proto.returnLevel_i = function () {
+		var t = new egret.tween.TweenGroup();
+		this.returnLevel = t;
+		t.items = [this._TweenItem4_i()];
+		return t;
+	};
+	_proto._TweenItem4_i = function () {
+		var t = new egret.tween.TweenItem();
+		this._TweenItem4 = t;
+		t.paths = [this._Set4_i(),this._To8_i(),this._To9_i(),this._To10_i()];
+		return t;
+	};
+	_proto._Set4_i = function () {
+		var t = new egret.tween.Set();
+		t.props = this._Object11_i();
+		return t;
+	};
+	_proto._Object11_i = function () {
+		var t = {};
+		this._Object11 = t;
+		return t;
+	};
+	_proto._To8_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object12_i();
+		return t;
+	};
+	_proto._Object12_i = function () {
+		var t = {};
+		this._Object12 = t;
+		return t;
+	};
+	_proto._To9_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object13_i();
+		return t;
+	};
+	_proto._Object13_i = function () {
+		var t = {};
+		this._Object13 = t;
+		return t;
+	};
+	_proto._To10_i = function () {
+		var t = new egret.tween.To();
+		t.duration = 150;
+		t.props = this._Object14_i();
+		return t;
+	};
+	_proto._Object14_i = function () {
+		var t = {};
+		this._Object14 = t;
+		return t;
+	};
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.height = 300;
+		t.horizontalCenter = 0;
+		t.source = "win_png";
+		t.width = 500;
+		t.y = 0;
+		return t;
+	};
+	_proto.label_i = function () {
+		var t = new eui.Label();
+		this.label = t;
+		t.anchorOffsetX = 120;
+		t.anchorOffsetY = 0;
+		t.bold = true;
+		t.height = 59;
+		t.horizontalCenter = 0;
+		t.italic = true;
+		t.text = "恭喜您，通过当前关卡";
+		t.verticalAlign = "middle";
+		t.width = 317;
+		t.y = 91;
+		return t;
+	};
+	_proto.next_i = function () {
+		var t = new eui.Image();
+		this.next = t;
+		t.anchorOffsetX = 67.5;
+		t.height = 50;
+		t.horizontalCenter = 0.5;
+		t.source = "next_png";
+		t.width = 180;
+		t.y = 216;
+		return t;
+	};
+	_proto.LevelList_i = function () {
+		var t = new eui.Label();
+		this.LevelList = t;
+		t.bold = true;
+		t.size = 25;
+		t.text = "返回关卡";
+		t.textColor = 0xf4eded;
+		t.x = 454;
+		t.y = 183;
+		return t;
+	};
+	return win;
 })(eui.Skin);
