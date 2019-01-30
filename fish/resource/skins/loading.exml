@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="loading" width="640" height="700" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image width="445" height="53" x="76" y="165" source="loading_1_png"/>
-	<e:Image width="96" height="34" x="250.5" y="218" source="loading_3_png"/>
-	<e:Image id="loading" width="10" height="33" x="85.5" y="174" source="loading_2_png"/>
+	<e:Image width="445" height="53" y="165" source="loading_1_png" horizontalCenter="0"/>
+	<e:Image width="96" height="34" y="218" source="loading_3_png" horizontalCenter="0"/>
+	<e:Image id="loading" width="10" height="33" y="174" source="loading_2_png" left="109"/>
+	<e:Group width="570" height="200" y="452" anchorOffsetX="0" horizontalCenter="0">
+		<e:Label text="健康游戏忠告" x="1" y="36" anchorOffsetX="0" width="567" verticalAlign="middle" textAlign="center"/>
+		<e:Label text="抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。" y="86" anchorOffsetX="0" width="568" anchorOffsetY="0" height="47" size="20" verticalAlign="middle" textAlign="center" horizontalCenter="0"/>
+		<e:Label text="适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。" y="133" anchorOffsetX="0" width="568" anchorOffsetY="0" height="47" size="20" horizontalCenter="0" verticalAlign="middle" textAlign="center"/>
+	</e:Group>
 </e:Skin>
