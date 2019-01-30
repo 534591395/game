@@ -66,4 +66,13 @@ class FishEmitter extends egret.DisplayObjectContainer {
 
         }
     }
+
+    // 清除所有界面上的粒子
+    public clearAll() {
+        this.particles.map( particle => {
+            if(particle.enabled) {
+                this.removeParticle(particle);
+            }
+        });
+    }
 }

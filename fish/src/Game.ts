@@ -137,6 +137,8 @@ class Game extends egret.DisplayObjectContainer {
         // 添加操作界面UI
         this.addChild(this.scorePanel);
         this.clearFish();
+        // 清除界面上的粒子
+        this.fishEmitter.clearAll();
     }
     
     // 开始当前游戏关卡
