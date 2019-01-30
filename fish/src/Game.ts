@@ -9,14 +9,12 @@ class Game extends egret.DisplayObjectContainer {
     private time:number = 1000;
     // 当前关卡的通关时间（默认20s）
     public timeNum:number = 20;
-    // 当前关卡剩余倒计时
-    private timeTxtNum:number = 0;
     // 倒计时显示的文案控件
     private txt:egret.TextField;
     // 控制生成泡泡鱼个数（通过除以一个整数），当前帧率变动时，不断累加
     private counter:number = 0;
     // 生成界面上泡泡鱼个数频率
-    private frequencyFish:number = 10;
+    private frequencyFish:number = 8;
     // 被用户点破的泡泡鱼数量（分数）
     private delFish:number = 0;
     // 回收站里的泡泡鱼
@@ -46,7 +44,11 @@ class Game extends egret.DisplayObjectContainer {
         this.gravity = -0.2;
         this.timeNum = this.timeNum - (this.level -1);
         this.gravity = this.gravity + (- this.level/ 10);
-        this.scorePanel.setOriginNum(30+this.level);
+        // 设置当前关卡分数
+        this.scorePanel.setOriginNum(29+this.level);
+        // 显示面板开始文案
+        this.scorePanel.showStart();
+        this.timer.repeatCount = this.timeNum;
     }
 
     private render() {
@@ -66,8 +68,6 @@ class Game extends egret.DisplayObjectContainer {
         this.scorePanel.x = 0;
         this.scorePanel.y = 100;
         this.addChild(this.scorePanel);
-        // 显示面板
-        this.scorePanel.showStart();
         // 监听触发游戏开始
         this.scorePanel.addEventListener(CustomHandleEvent.GameStart, this.gameStart, this);
         // 监听返回关卡列表
@@ -103,7 +103,7 @@ class Game extends egret.DisplayObjectContainer {
 
     // 计时器回调，设置当前倒计时
     private timerFunc() {
-        this.txt.text = --this.timeTxtNum + 'S';
+        this.txt.text = this.timer.repeatCount - this.timer.currentCount + 'S';
     }
 
     // 计时器回调，倒计时完成后（当前关卡已到规定时间）
@@ -125,9 +125,8 @@ class Game extends egret.DisplayObjectContainer {
     // 开始当前游戏关卡
     private gameStart() {
         // 重新设置当前关卡剩余倒计时
-        this.timeTxtNum = this.timeNum;
         // 设置倒计时显示组件的文案
-        this.txt.text = this.timeTxtNum + 'S';
+        this.txt.text = this.timer.repeatCount + 'S';
         // 计时器重置
         this.timer.reset();
         // 开始关卡倒计时

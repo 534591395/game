@@ -108,7 +108,7 @@ class Main extends eui.UILayer {
         this.bg.start();
         
         // 关卡网格
-        this.levelGroup = new LevelGroup();
+        this.levelGroup = new LevelGroup(9, [1]);
         this.addChild(this.levelGroup);
         this.levelGroup.y = 150;
         this.levelGroup.game.y = -150;

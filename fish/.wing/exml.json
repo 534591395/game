@@ -2,7 +2,7 @@
   "global": {
     "globalAutoLayerMarkEnable": true,
     "gridColor": 8421504,
-    "gridEnabled": true,
+    "gridEnabled": false,
     "gridSize": 20
   },
   "168936f125f": {
