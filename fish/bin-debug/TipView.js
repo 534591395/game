@@ -17,19 +17,35 @@ var TipView = (function (_super) {
         var _this = _super.call(this) || this;
         _this.isClick = false;
         _this.skinName = "resource/skins/tip.exml";
+        _this.text.textAlign = "center";
+        _this.text.textColor = 0xFFFFFF;
+        _this.text.size = 24;
+        _this.text.y = 100;
         _this.init();
         return _this;
     }
     TipView.prototype.init = function () {
         var _this = this;
+        var customEvent = new CustomHandleEvent(CustomHandleEvent.CompleteAnimation);
+        var returnLevelEvent = new CustomHandleEvent(CustomHandleEvent.ReturnLevelAnimation);
+        // 点击按钮触发按钮动画效果
         this.btn.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             _this.start.play(0);
         }, this);
         this.start.addEventListener('complete', function () {
-            //this.GameLayer.removeChild(this);
+            _this.dispatchEvent(customEvent);
         }, this);
+        // 点击返回关卡列表
+        this.LevelList.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            _this.returnLevel.play(0);
+        }, this);
+        this.returnLevel.addEventListener('complete', function () {
+            _this.dispatchEvent(returnLevelEvent);
+        }, this);
+    };
+    TipView.prototype.setText = function (text) {
+        this.text.text = text;
     };
     return TipView;
 }(eui.Component));
 __reflect(TipView.prototype, "TipView");
-//# sourceMappingURL=TipView.js.map

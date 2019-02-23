@@ -66,7 +66,15 @@ var FishEmitter = (function (_super) {
             particle.update();
         }
     };
+    // 清除所有界面上的粒子
+    FishEmitter.prototype.clearAll = function () {
+        var _this = this;
+        this.particles.map(function (particle) {
+            if (particle.enabled) {
+                _this.removeParticle(particle);
+            }
+        });
+    };
     return FishEmitter;
 }(egret.DisplayObjectContainer));
 __reflect(FishEmitter.prototype, "FishEmitter");
-//# sourceMappingURL=FishEmitter.js.map

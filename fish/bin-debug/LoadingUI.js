@@ -41,20 +41,21 @@ var LoadingUI = (function (_super) {
     function LoadingUI() {
         var _this = _super.call(this) || this;
         _this.createView();
+        _this.skinName = "resource/skins/loading.exml";
         return _this;
     }
     LoadingUI.prototype.createView = function () {
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.y = 300;
-        this.textField.width = 480;
-        this.textField.height = 100;
-        this.textField.textAlign = "center";
+        // this.textField.y = 300;
+        // this.textField.width = 480;
+        // this.textField.height = 100;
+        // this.textField.textAlign = "center";
     };
     LoadingUI.prototype.onProgress = function (current, total) {
-        this.textField.text = "Loading..." + current + "/" + total;
+        //this.textField.text = `Loading...${current}/${total}`;
+        this.loading.width = (current / total) * 428;
     };
     return LoadingUI;
-}(egret.Sprite));
+}(eui.Component));
 __reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
-//# sourceMappingURL=LoadingUI.js.map
