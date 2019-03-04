@@ -13,15 +13,19 @@
 	"game": [
 		"bin-debug/LoadingUI.js",
 		"bin-debug/AssetAdapter.js",
-		"bin-debug/Btn.js",
 		"bin-debug/Fish.js",
 		"bin-debug/FishEmitter.js",
 		"bin-debug/FishParticle.js",
+		"bin-debug/Game.js",
+		"bin-debug/Level.js",
+		"bin-debug/LevelGroup.js",
 		"bin-debug/BgMap.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ScorePanel.js",
 		"bin-debug/ThemeAdapter.js",
-		"bin-debug/TipView.js"
+		"bin-debug/TipView.js",
+		"bin-debug/Win.js",
+		"bin-debug/event/CustomHandleEvent.js"
 	]
 }
