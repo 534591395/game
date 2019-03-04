@@ -78,4 +78,3 @@ var FishEmitter = (function (_super) {
     return FishEmitter;
 }(egret.DisplayObjectContainer));
 __reflect(FishEmitter.prototype, "FishEmitter");
-//# sourceMappingURL=FishEmitter.js.map

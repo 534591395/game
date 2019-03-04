@@ -49,4 +49,3 @@ var TipView = (function (_super) {
     return TipView;
 }(eui.Component));
 __reflect(TipView.prototype, "TipView");
-//# sourceMappingURL=TipView.js.map

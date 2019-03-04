@@ -110,4 +110,3 @@ var ScorePanel = (function (_super) {
     return ScorePanel;
 }(egret.Sprite));
 __reflect(ScorePanel.prototype, "ScorePanel");
-//# sourceMappingURL=ScorePanel.js.map

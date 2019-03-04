@@ -118,8 +118,14 @@ var Main = (function (_super) {
                     case 0:
                         _a.trys.push([0, 5, , 6]);
                         egret.ImageLoader.crossOrigin = 'anonymous';
+<<<<<<< HEAD
                         return [4 /*yield*/, RES.loadConfig("default.res.json", "resource/")];
+=======
+                        //await RES.loadConfig("default.res.json", "resource/");
+                        return [4 /*yield*/, RES.loadConfig("default.res.json", "https://wxgame.dreamrabbit.tech/game/resource/")];
+>>>>>>> f3bebcc0e375b0bc0e67803a4d6f8b398ed96c94
                     case 1:
+                        //await RES.loadConfig("default.res.json", "resource/");
                         _a.sent();
                         //await RES.loadConfig("default.res.json", "https://wxgame.dreamrabbit.tech/game/resource/");
                         return [4 /*yield*/, this.loadTheme()];
@@ -174,4 +180,3 @@ var Main = (function (_super) {
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
-//# sourceMappingURL=Main.js.map
