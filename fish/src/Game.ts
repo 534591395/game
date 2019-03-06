@@ -1,8 +1,9 @@
 /**
  * 游戏主逻辑
  */
-
+declare var wx: any;
 class Game extends egret.DisplayObjectContainer {
+    
     // 计时器
     private timer:egret.Timer;
     // 倒计时频率（默认1s）
@@ -31,10 +32,35 @@ class Game extends egret.DisplayObjectContainer {
     private gravity:number = -0.2;
     // 规定时间内需达到的分数
     private originNum:number = 30;
+    // 微信广告
+    private bannerAd:any;
 
     public constructor() {
         super();
         this.render();
+        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onCreateBannerAd, this);
+    }
+
+    private onCreateBannerAd() {
+        try {
+            if (this.bannerAd) {
+                this.bannerAd.destroy()
+            }
+            this.bannerAd = wx.createBannerAd({
+                adUnitId: 'adunit-e808c74164a5538a',
+                style: {
+                    left: 0,
+                    top: this.stage.stageHeight/2 -50,
+                    width: this.stage.stageWidth,
+                    height: 120
+                }
+            }); 
+            this.bannerAd.onError(err => {
+              //console.log(err, '初始化微信广告失败');
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     // 关卡调整
@@ -58,6 +84,7 @@ class Game extends egret.DisplayObjectContainer {
         this.pannelUI();
         this.gameTimer();
         this.TxtTimer();
+
     }
     
     // 操作以及提示面板
@@ -139,10 +166,26 @@ class Game extends egret.DisplayObjectContainer {
         this.clearFish();
         // 清除界面上的粒子
         this.fishEmitter.clearAll();
+        try {
+            setTimeout(() => {
+                this.bannerAd.show();
+            }, 1000);
+            console.log('显示广告');
+        } catch (error) {
+            console.log(error);
+        }
     }
     
     // 开始当前游戏关卡
     private gameStart() {
+        try {
+            this.bannerAd.hide();
+            console.log('隐藏广告');
+            this.onCreateBannerAd();
+            console.log('重新拉取广告');
+        } catch (error) {
+            console.log(error);
+        }
         // 重新设置当前关卡剩余倒计时
         // 设置倒计时显示组件的文案
         this.txt.text = this.timer.repeatCount + 'S';
