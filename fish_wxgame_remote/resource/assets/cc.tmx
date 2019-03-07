@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="left-up" width="20" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="2" nextobjectid="1">
  <tileset firstgid="1" version="1.2" tiledversion="1.2.2" name="bg_1" tilewidth="40" tileheight="40" tilecount="240" columns="20">
- <image source="bg_1.png" width="800" height="480"/>
+ <image source="https://wxgame.dreamrabbit.tech/game/resource/assets/bg_1.png" width="800" height="480"/>
 </tileset>
  <layer id="1" name="bg" width="20" height="12">
   <data encoding="csv">
