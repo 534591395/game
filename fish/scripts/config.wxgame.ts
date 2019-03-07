@@ -23,7 +23,17 @@ const config: ResourceManagerConfig = {
                     new CompilePlugin({ libraryType: "debug", defines: { DEBUG: true, RELEASE: false } }),
                     new ExmlPlugin('commonjs'), // 非 EUI 项目关闭此设置
                     new WxgamePlugin(),
-                    new ManifestPlugin({ output: 'manifest.js' })
+                    new UglifyPlugin([{
+                        sources: ["main.js"],
+                        target: "main.min.js"
+                    }
+                    ]),
+                    new ResSplitPlugin({
+                      matchers:[
+                          {from:"resource/**",to:`../${projectName}_wxgame_remote`}
+                      ]
+                    }),
+                    new ManifestPlugin({ output: 'manifest.js' }),
                 ]
             }
         }
