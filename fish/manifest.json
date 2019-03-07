@@ -8,7 +8,8 @@
 		"libs/modules/game/game.js",
 		"libs/modules/socket/socket.js",
 		"libs/modules/dragonBones/dragonBones.js",
-		"libs/modules/promise/promise.js"
+		"libs/modules/promise/promise.js",
+		"libs/modules/tiled/tiled.js"
 	],
 	"game": [
 		"bin-debug/LoadingUI.js",
@@ -21,6 +22,7 @@
 		"bin-debug/LevelGroup.js",
 		"bin-debug/BgMap.js",
 		"bin-debug/Main.js",
+		"bin-debug/map.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ScorePanel.js",
 		"bin-debug/ThemeAdapter.js",

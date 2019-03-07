@@ -52,3 +52,4 @@ var FishParticle = (function (_super) {
     return FishParticle;
 }(egret.DisplayObjectContainer));
 __reflect(FishParticle.prototype, "FishParticle");
+//# sourceMappingURL=FishParticle.js.map

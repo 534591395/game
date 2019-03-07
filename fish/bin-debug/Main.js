@@ -118,14 +118,8 @@ var Main = (function (_super) {
                     case 0:
                         _a.trys.push([0, 5, , 6]);
                         egret.ImageLoader.crossOrigin = 'anonymous';
-<<<<<<< HEAD
                         return [4 /*yield*/, RES.loadConfig("default.res.json", "resource/")];
-=======
-                        //await RES.loadConfig("default.res.json", "resource/");
-                        return [4 /*yield*/, RES.loadConfig("default.res.json", "https://wxgame.dreamrabbit.tech/game/resource/")];
->>>>>>> f3bebcc0e375b0bc0e67803a4d6f8b398ed96c94
                     case 1:
-                        //await RES.loadConfig("default.res.json", "resource/");
                         _a.sent();
                         //await RES.loadConfig("default.res.json", "https://wxgame.dreamrabbit.tech/game/resource/");
                         return [4 /*yield*/, this.loadTheme()];
@@ -167,16 +161,19 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createGameScene = function () {
-        this.bg = new BgMap();
-        this.addChild(this.bg);
-        // 初始化开始按钮
-        this.bg.start();
-        // 关卡网格
-        this.levelGroup = new LevelGroup(9, [1]);
-        this.addChild(this.levelGroup);
-        this.levelGroup.y = 150;
-        this.levelGroup.game.y = -150;
+        // this.bg = new BgMap();
+        // this.addChild(this.bg);
+        // // 初始化开始按钮
+        // this.bg.start();
+        // // 关卡网格
+        // this.levelGroup = new LevelGroup(9, [1]);
+        // this.addChild(this.levelGroup);
+        // this.levelGroup.y = 150;
+        // this.levelGroup.game.y = -150;
+        this.addChild(new Map());
+        //微信小游戏里 game.json配置: 横屏 deviceOrientation: landscape
     };
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
+//# sourceMappingURL=Main.js.map

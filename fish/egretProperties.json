@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.14",
-  "compilerVersion": "5.2.14",
+  "engineVersion": "5.2.15",
+  "compilerVersion": "5.2.15",
   "template": {},
   "target": {
     "current": "wxgame"
@@ -29,6 +29,10 @@
     },
     {
       "name": "promise"
+    },
+    {
+      "name": "tiled",
+      "path": "../libsrc"
     }
   ]
 }

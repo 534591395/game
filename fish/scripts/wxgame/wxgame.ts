@@ -32,6 +32,9 @@ export class WxgamePlugin implements plugins.Command {
                 if (filename == 'libs/modules/dragonBones/dragonBones.js' || filename == 'libs/modules/dragonBones/dragonBones.min.js') {
                     content += ';window.dragonBones = dragonBones';
                 }
+                if (filename === "libs/modules/tiled/tiled.js" || filename === "libs/modules/tiled/tiled.min.js") {
+                    content += ';window.tiled = tiled';
+                }
                 content = "var egret = window.egret;" + content;
                 if (filename == 'main.js') {
                     content += "\n;window.Main = Main;"
