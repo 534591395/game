@@ -20,24 +20,40 @@
 </data>
  </layer>
  <objectgroup id="2" name="bomb">
-  <object id="12" name="bomb4" x="217" y="271">
+  <object id="12" name="bomb4" x="217" y="271" visible="0">
+   <properties>
+    <property name="height" type="int" value="40"/>
+    <property name="width" type="int" value="40"/>
+   </properties>
    <point/>
   </object>
-  <object id="13" name="bomb3" x="540" y="277">
+  <object id="13" name="bomb3" x="540" y="277" visible="0">
+   <properties>
+    <property name="height" type="int" value="40"/>
+    <property name="width" type="int" value="40"/>
+   </properties>
    <point/>
   </object>
-  <object id="14" name="bomb2" x="301" y="157">
+  <object id="14" name="bomb2" x="301" y="157" visible="0">
+   <properties>
+    <property name="height" type="int" value="40"/>
+    <property name="width" type="int" value="40"/>
+   </properties>
    <point/>
   </object>
-  <object id="15" name="bomb1" x="618" y="316">
+  <object id="15" name="bomb1" x="618" y="316" visible="0">
+   <properties>
+    <property name="height" type="int" value="40"/>
+    <property name="width" type="int" value="40"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>
  <objectgroup id="4" name="enemy">
-  <object id="20" name="enemy2" x="1" y="126" width="84" height="65"/>
-  <object id="21" name="enemy1" x="715" y="257.5" width="84" height="65"/>
+  <object id="20" name="enemy2" x="0" y="126" width="84" height="65" visible="0"/>
+  <object id="21" name="enemy1" x="715" y="257.5" width="84" height="65" visible="0"/>
  </objectgroup>
  <objectgroup id="5" name="fish">
-  <object id="22" name="fish1" x="321" y="434" width="158" height="46"/>
+  <object id="22" name="fish1" x="321" y="401" width="158" height="79" visible="0"/>
  </objectgroup>
 </map>
