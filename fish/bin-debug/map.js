@@ -37,18 +37,21 @@ var Map = (function (_super) {
     };
     Map.prototype.bomb = function (bomb) {
         var _this = this;
-        var childrens = bomb._childrens;
+        console.log(bomb);
+        var childrens = bomb._childrens || [];
         childrens.map(function (item, i) {
             var k = i + 1;
             var bompImg = _this.createBitmapByName("bomp_" + k + "_png");
             var attributes = item.attributes;
             bompImg.x = attributes.x;
-            bompImg.y = attributes.y;
-            debugger;
-            bompImg.width = attributes.width;
-            bompImg.height = attributes.height;
+            bompImg.y = attributes.y - 40;
+            bompImg.width = 40;
+            bompImg.height = 40;
             _this.addChild(bompImg);
         });
+    };
+    // 获取地图对象的自定义属性
+    Map.prototype.getProperties = function (children, name) {
     };
     Map.prototype.move = function (event) {
         event.target.x -= 5;

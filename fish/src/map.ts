@@ -1,10 +1,9 @@
 class Map extends egret.DisplayObjectContainer {
+    private enemyMap:EnemyMap;
     public constructor() {
         super();
 
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-
-
     }
 
     private onAddToStage() {
@@ -29,6 +28,8 @@ class Map extends egret.DisplayObjectContainer {
             
             var bomb = tmxTileMap.getChildByName('bomb');
             self.bomb(bomb);
+
+            self.enemy(tmxTileMap.getChildByName('enemy'));
             
             
             // tmxTileMap.touchEnabled = true;
@@ -36,23 +37,31 @@ class Map extends egret.DisplayObjectContainer {
         }, url);
         
     }
-
+    
+    // 炸弹
     private bomb(bomb) {
-        
-        const childrens = bomb._childrens;
+        const childrens = bomb._childrens || [];
         childrens.map( (item, i) => {
             let k = i+1;
             let bompImg = this.createBitmapByName("bomp_"+ k +"_png");
       
             const attributes = item.attributes;
             bompImg.x = attributes.x;
-            bompImg.y = attributes.y;
+            bompImg.y = attributes.y - 40;
             
-            bompImg.width = attributes.width;
-            bompImg.height = attributes.height;
+            bompImg.width = 40;
+            bompImg.height = 40;
             this.addChild(bompImg);
         });
     }
+
+    // 鲨鱼
+    private enemy(enemy) {
+        this.enemyMap = new EnemyMap(enemy);
+        
+        this.addChild(this.enemyMap);
+    }
+    
 
     // 获取地图对象的自定义属性
     private getProperties(children,name:string) {
