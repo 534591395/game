@@ -41,7 +41,11 @@ class Map extends egret.DisplayObjectContainer {
         
     }
     
-    private addBomb(bompImg, attributes) {
+    private addBomb(bompImg, attributes, k) {
+            k++;
+            if (k == 3 || k > 4) {
+                k = 1
+            }
             var self = this;
             bompImg.x = attributes.x;   
             bompImg.y = attributes.y - 40;
@@ -51,9 +55,10 @@ class Map extends egret.DisplayObjectContainer {
             this.addChild(bompImg);
             setTimeout(function() {
                 self.removeChild(bompImg);
-                bompImg = self.createBitmapByName("bomp_"+ '4' +"_png");
-                self.addBomb(bompImg, attributes)
-            }, 2000);
+                bompImg = self.createBitmapByName("bomp_"+ k +"_png");
+                // console.log(k);
+                self.addBomb(bompImg, attributes, k);
+            }, 1000);
     }
     // 炸弹
     private bomb(bomb) {
@@ -64,7 +69,7 @@ class Map extends egret.DisplayObjectContainer {
             let bompImg = this.createBitmapByName("bomp_"+ k +"_png");
         
             const attributes = item.attributes;
-            this.addBomb(bompImg, attributes)
+            this.addBomb(bompImg, attributes, k)
             // bompImg.x = attributes.x;
             // bompImg.y = attributes.y - 40;
             
