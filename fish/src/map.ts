@@ -10,8 +10,8 @@ class Map extends egret.DisplayObjectContainer {
         this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
 
         var self = this;
-        //var url: string = "https://wxgame.dreamrabbit.tech/game/resource/assets/cc.tmx";
-        var url: string = "resource/assets/cc.tmx";
+        var url: string = "https://wxgame.dreamrabbit.tech/game/resource/assets/cc.tmx";
+        //var url: string = "resource/assets/cc.tmx";
         var urlLoader:egret.URLLoader = new egret.URLLoader();
         urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
         urlLoader.load(new egret.URLRequest(url));
