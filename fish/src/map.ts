@@ -26,9 +26,12 @@ class Map extends egret.DisplayObjectContainer {
             tmxTileMap.render();
             self.addChild(tmxTileMap);
             
+            // var bomb = tmxTileMap.getChildByName('bomb');
+            // self.bomb(bomb);
+
+            
             var bomb = tmxTileMap.getChildByName('bomb');
             self.bomb(bomb);
-
             self.enemy(tmxTileMap.getChildByName('enemy'));
             
             
@@ -38,20 +41,36 @@ class Map extends egret.DisplayObjectContainer {
         
     }
     
-    // 炸弹
-    private bomb(bomb) {
-        const childrens = bomb._childrens || [];
-        childrens.map( (item, i) => {
-            let k = i+1;
-            let bompImg = this.createBitmapByName("bomp_"+ k +"_png");
-      
-            const attributes = item.attributes;
-            bompImg.x = attributes.x;
+    private addBomb(bompImg, attributes) {
+            var self = this;
+            bompImg.x = attributes.x;   
             bompImg.y = attributes.y - 40;
             
             bompImg.width = 40;
             bompImg.height = 40;
             this.addChild(bompImg);
+            setTimeout(function() {
+                self.removeChild(bompImg);
+                bompImg = self.createBitmapByName("bomp_"+ '4' +"_png");
+                self.addBomb(bompImg, attributes)
+            }, 2000);
+    }
+    // 炸弹
+    private bomb(bomb) {
+        const childrens = bomb._childrens || [];
+        console.log(childrens)
+        childrens.map( (item, i) => {
+            let k = i+1;
+            let bompImg = this.createBitmapByName("bomp_"+ k +"_png");
+        
+            const attributes = item.attributes;
+            this.addBomb(bompImg, attributes)
+            // bompImg.x = attributes.x;
+            // bompImg.y = attributes.y - 40;
+            
+            // bompImg.width = 40;
+            // bompImg.height = 40;
+            // this.addChild(bompImg);
         });
     }
 
