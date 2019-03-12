@@ -1,5 +1,6 @@
 class Map extends egret.DisplayObjectContainer {
     private enemyMap:EnemyMap;
+    private bombMap:BombMap;
     public constructor() {
         super();
 
@@ -38,45 +39,17 @@ class Map extends egret.DisplayObjectContainer {
             // tmxTileMap.touchEnabled = true;
             // tmxTileMap.addEventListener(egret.TouchEvent.TOUCH_TAP, self.move, self);
         }, url);
-        
+   
     }
     
-    private addBomb(bompImg, attributes, k) {
-            k++;
-            if (k == 3 || k > 4) {
-                k = 1
-            }
-            var self = this;
-            bompImg.x = attributes.x;   
-            bompImg.y = attributes.y - 40;
-            
-            bompImg.width = 40;
-            bompImg.height = 40;
-            this.addChild(bompImg);
-            setTimeout(function() {
-                self.removeChild(bompImg);
-                bompImg = self.createBitmapByName("bomp_"+ k +"_png");
-                // console.log(k);
-                self.addBomb(bompImg, attributes, k);
-            }, 1000);
-    }
+
+
+
     // 炸弹
     private bomb(bomb) {
-        const childrens = bomb._childrens || [];
-        console.log(childrens)
-        childrens.map( (item, i) => {
-            let k = i+1;
-            let bompImg = this.createBitmapByName("bomp_"+ k +"_png");
+        this.bombMap = new BombMap(bomb);
         
-            const attributes = item.attributes;
-            this.addBomb(bompImg, attributes, k)
-            // bompImg.x = attributes.x;
-            // bompImg.y = attributes.y - 40;
-            
-            // bompImg.width = 40;
-            // bompImg.height = 40;
-            // this.addChild(bompImg);
-        });
+        this.addChild(this.bombMap);
     }
 
     // 鲨鱼
