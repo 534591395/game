@@ -36,6 +36,12 @@ var Map = (function (_super) {
             self.enemy(tmxTileMap.getChildByName('enemy'));
             // tmxTileMap.touchEnabled = true;
             // tmxTileMap.addEventListener(egret.TouchEvent.TOUCH_TAP, self.move, self);
+            var matrix = [
+                [0, 0, 0, 1, 0],
+                [1, 0, 0, 0, 1],
+                [0, 0, 1, 0, 0]
+            ];
+            var grid = new PF.Grid(5, 3, matrix);
         }, url);
     };
     // 炸弹
@@ -65,3 +71,4 @@ var Map = (function (_super) {
     return Map;
 }(egret.DisplayObjectContainer));
 __reflect(Map.prototype, "Map");
+//# sourceMappingURL=map.js.map

@@ -87,3 +87,4 @@ var BgMap = (function (_super) {
     return BgMap;
 }(egret.DisplayObjectContainer));
 __reflect(BgMap.prototype, "BgMap");
+//# sourceMappingURL=BgMap.js.map

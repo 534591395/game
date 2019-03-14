@@ -28,3 +28,4 @@ var EnemyMap = (function (_super) {
     return EnemyMap;
 }(egret.DisplayObjectContainer));
 __reflect(EnemyMap.prototype, "EnemyMap");
+//# sourceMappingURL=EnemyMap.js.map
