@@ -18,8 +18,8 @@ var Map = (function (_super) {
     Map.prototype.onAddToStage = function () {
         this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
         var self = this;
-        //var url: string = "https://wxgame.dreamrabbit.tech/game/resource/assets/cc.tmx";
-        var url = "resource/assets/cc.tmx";
+        var url = "https://wxgame.dreamrabbit.tech/game/resource/assets/cc.tmx";
+        //var url: string = "resource/assets/cc.tmx";
         var urlLoader = new egret.URLLoader();
         urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
         urlLoader.load(new egret.URLRequest(url));
@@ -29,26 +29,24 @@ var Map = (function (_super) {
             var tmxTileMap = new tiled.TMXTilemap(2000, 2000, data, url);
             tmxTileMap.render();
             self.addChild(tmxTileMap);
+            // var bomb = tmxTileMap.getChildByName('bomb');
+            // self.bomb(bomb);
             var bomb = tmxTileMap.getChildByName('bomb');
             self.bomb(bomb);
+            self.enemy(tmxTileMap.getChildByName('enemy'));
             // tmxTileMap.touchEnabled = true;
             // tmxTileMap.addEventListener(egret.TouchEvent.TOUCH_TAP, self.move, self);
         }, url);
     };
+    // 炸弹
     Map.prototype.bomb = function (bomb) {
-        var _this = this;
-        console.log(bomb);
-        var childrens = bomb._childrens || [];
-        childrens.map(function (item, i) {
-            var k = i + 1;
-            var bompImg = _this.createBitmapByName("bomp_" + k + "_png");
-            var attributes = item.attributes;
-            bompImg.x = attributes.x;
-            bompImg.y = attributes.y - 40;
-            bompImg.width = 40;
-            bompImg.height = 40;
-            _this.addChild(bompImg);
-        });
+        this.bombMap = new BombMap(bomb);
+        this.addChild(this.bombMap);
+    };
+    // 鲨鱼
+    Map.prototype.enemy = function (enemy) {
+        this.enemyMap = new EnemyMap(enemy);
+        this.addChild(this.enemyMap);
     };
     // 获取地图对象的自定义属性
     Map.prototype.getProperties = function (children, name) {
@@ -67,4 +65,3 @@ var Map = (function (_super) {
     return Map;
 }(egret.DisplayObjectContainer));
 __reflect(Map.prototype, "Map");
-//# sourceMappingURL=map.js.map

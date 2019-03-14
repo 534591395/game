@@ -297,4 +297,3 @@ var Game = (function (_super) {
     return Game;
 }(egret.DisplayObjectContainer));
 __reflect(Game.prototype, "Game");
-//# sourceMappingURL=Game.js.map

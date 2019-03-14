@@ -33,6 +33,10 @@
     {
       "name": "tiled",
       "path": "../libsrc"
+    },
+    {
+      "name": "pathFinding",
+      "path": "../PathFinding"
     }
   ]
 }
