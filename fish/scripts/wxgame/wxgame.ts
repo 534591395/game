@@ -35,6 +35,9 @@ export class WxgamePlugin implements plugins.Command {
                 if (filename === "libs/modules/tiled/tiled.js" || filename === "libs/modules/tiled/tiled.min.js") {
                     content += ';window.tiled = tiled';
                 }
+                if (filename === "libs/modules/pathFinding/PathFinding.js" || filename === "libs/modules/pathFinding/PathFinding.min.js") {
+                    content += ';window.PF = PF';
+                }
                 content = "var egret = window.egret;" + content;
                 if (filename == 'main.js') {
                     content += "\n;window.Main = Main;"

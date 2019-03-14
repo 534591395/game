@@ -2547,7 +2547,7 @@ module.exports = JumpPointFinderBase;
 },{"../core/DiagonalMovement":3,"../core/Heuristic":5,"../core/Util":7,"heap":1}]},{},[8])
 (8)
 });
-
+var PF;
 (function (PF) {
     (function (DiagonalMovement) {
         /**
