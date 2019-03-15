@@ -488,14 +488,16 @@ var tiled;
          * @version Egret 3.0.3
          */
         function TMXLayer(tilemap, tilewidth, tileheight, orientation, tilesets, z, data) {
+            // debugger
             var _this = _super.call(this, tilemap, data, z) || this;
             _this._staticContainer = new egret.Sprite();
             //
             _this.addChild(_this._staticContainer);
-            //为了防止地图坐标为负时出现无法显示的问题，这里延迟2秒进行缓存
-            setTimeout(function (self) {
-                self._staticContainer.cacheAsBitmap = true;
-            }, 2000, _this);
+            //为了防止地图坐标为负时出现无法显示的问题，这里延迟2秒进行缓存 
+            // setTimeout(function (self) {
+            //     self._staticContainer.cacheAsBitmap = true;
+            // }, 2000, _this);
+            _this._staticContainer.cacheAsBitmap = true;
             _this._animationContainer = new egret.Sprite();
             _this.addChild(_this._animationContainer);
             _this._tilemap = tilemap;
@@ -943,6 +945,7 @@ var tiled;
          */
         TMXTilemap.prototype.render = function () {
             //add all layers instances
+            
             var layers = this.getLayers();
             for (var i = 0; i < layers.length; i++) {
                 this.addChild(layers[i]);
@@ -1023,6 +1026,7 @@ var tiled;
          * @param data
          */
         TMXTilemap.prototype.readMapObjects = function (data) {
+            //debugger
             if (this._initialized === true)
                 return;
             //自动排序
@@ -1041,7 +1045,9 @@ var tiled;
                             this._tilesets.add(new tiled.TMXTileset(this, child));
                             break;
                         case tiled.TMXConstants.LAYER:
+                            // 这里真机上跑报错了，图层类型
                             this._layers.push(this.parseLayer(child, zOrder++));
+                            //this.parseLayer(child, zOrder++)
                             break;
                         case tiled.TMXConstants.OBJECT_GROUP:
                             this._layers.push(this.parseObjectGroup(child, zOrder++));
@@ -1054,7 +1060,8 @@ var tiled;
                             break;
                     }
                 }
-            }
+            } 
+
             var loadCount = 0;
             for (var i = 0; i < this._tilesets.length; i++) {
                 var tileset = this._tilesets.getTilesetByIndex(i);
@@ -1111,18 +1118,22 @@ var tiled;
          * @param z 图层深度
          */
         TMXTilemap.prototype.parseLayer = function (data, z) {
+            // debugger
             var layer = new tiled.TMXLayer(this, this._tilewidth, this._tileheight, this._orientation, this._tilesets, z, data);
             //渲染图层
-            if (this._tmxRenderer.canRender(layer))
+            if (this._tmxRenderer.canRender(layer)) {
                 layer.setRenderer(this.getNewDefaultRenderer(this));
-            else
-                layer.setRenderer(this._tmxRenderer);
+            }else {
+                layer.setRenderer(this._tmxRenderer); 
+            }
+                
             var self = this;
             var onAllImageLoad = function (event) {
                 self.removeEventListener(tiled.TMXImageLoadEvent.ALL_IMAGE_COMPLETE, onAllImageLoad, this);
                 this.draw(new egret.Rectangle(0, 0, self._renderWidth, self._renderHeight));
             };
             this.addEventListener(tiled.TMXImageLoadEvent.ALL_IMAGE_COMPLETE, onAllImageLoad, layer);
+            
             return layer;
         };
         /**

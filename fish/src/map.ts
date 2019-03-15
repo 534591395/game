@@ -21,14 +21,13 @@ class Map extends egret.DisplayObjectContainer {
             
             var data:any = egret.XML.parse(event.target.data);
             
-            var tmxTileMap:tiled.TMXTilemap = new tiled.TMXTilemap(2000, 2000, data, url);
+            var tmxTileMap:tiled.TMXTilemap = new tiled.TMXTilemap(800, 480, data, url);
             
-
             tmxTileMap.render();
             self.addChild(tmxTileMap);
             
-            // var bomb = tmxTileMap.getChildByName('bomb');
-            // self.bomb(bomb);
+            var bomb = tmxTileMap.getChildByName('bomb');
+            self.bomb(bomb);
 
             
             var bomb = tmxTileMap.getChildByName('bomb');

@@ -113,9 +113,18 @@ class Main extends eui.UILayer {
         // this.levelGroup.y = 150;
         // this.levelGroup.game.y = -150;
 
-        this.addChild(new Map());
+        // this.touchEnabled = true;
+        // this.addEventListener( egret.TouchEvent.TOUCH_TAP, this.addMap, this );
+
+        
 
         //微信小游戏里 game.json配置: 横屏 deviceOrientation: landscape
+
+        this.addMap();
+    }
+
+    private addMap() {
+        this.addChild(new Map());
     }
 
 }
