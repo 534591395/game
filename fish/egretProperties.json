@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.15",
-  "compilerVersion": "5.2.15",
+  "engineVersion": "5.2.16",
+  "compilerVersion": "5.2.16",
   "template": {},
   "target": {
     "current": "wxgame"
