@@ -22,19 +22,46 @@ class EnemyMap extends egret.DisplayObjectContainer {
         fish.y = 100;
         this.addChild(fish);
         this.findPath();
+        
+        const walkArr = ['01','30','41','22'];
+        this.matrixMap(walkArr);
+    }
+
+    private matrixMap(walkArr) {
+        let matrix = [];
+        
+        for (let h = 0; h < 3; h++) {
+            let tump = [];
+            for(let w = 0; w < 5; w ++) {
+            if (walkArr.indexOf(''+w+''+h)> -1) {
+                tump.push(1);
+            } else {
+                tump.push(0); 
+            }
+            }
+            matrix.push(tump);
+        }
+        
+        return matrix;
     }
 
     private findPath() {
+        //0代表可走，1代表不可走
         var matrix = [     
             [0, 0, 0, 1, 0],
             [1, 0, 0, 0, 1],
             [0, 0, 1, 0, 0]
         ];
         var grid = new PF.Grid(5, 3, matrix);
+        var gridBackup = grid.clone();
         var finder = new PF.AStarFinder();
-        var path = finder.findPath(1, 2, 4, 2, grid);
-        var newPath = PF.Util.smoothenPath(grid, path);
-        console.log(newPath);
+        var path = finder.findPath(1, 2, 4, 2, gridBackup);
+        if (path.length) {
+            //var newPath = PF.Util.smoothenPath(gridBackup, path);
+            console.log(path);
+        } else {
+            console.log('未找到路径');
+        }
     }
 
     
