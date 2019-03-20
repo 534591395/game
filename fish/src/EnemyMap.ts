@@ -11,6 +11,10 @@ class EnemyMap extends egret.DisplayObjectContainer {
     private matrixs:number[][];
     // 格子地图
     private grid:any;
+    // 敌人
+    private enemyFish:Enemy;
+    // 敌人缓动动画对象
+    private tw;
     //map
     public map;
 
@@ -21,18 +25,50 @@ class EnemyMap extends egret.DisplayObjectContainer {
     }
 
     private onAddToStage() {
-        const fish = new Enemy();
-        fish.x = 200;
-        fish.y = 100;
-        this.addChild(fish);
+        this.enemyFish = new Enemy();
+        this.enemyFish.x = 1*40;
+        this.enemyFish.y = 3*40;
+        this.addChild(this.enemyFish);
         
         this.matrixs = this.matrixMap();
         this.grid = new PF.Grid(this.matrixs[0].length, this.matrixs.length, this.matrixs);
 
-        this.findPath(1,2,4,5);
+        //this.tw = egret.Tween.get(this.enemyFish);
     }
 
+    public setTarget(targetX, targetY) {
+        const fishW = Math.ceil(targetX/40);
+        const FishH = Math.ceil(targetY/40);
+
+        const enemyFishW = Math.ceil(this.enemyFish.x/40);
+        const enemyFishY = Math.ceil(this.enemyFish.y/40);
+
+        const pathArr = this.findPath(enemyFishW,enemyFishY,fishW,FishH) || [];
+        
+
+        this.animation(pathArr);
+    }
     
+    // 动画
+    private animation(pathArr) {
+        let isFinish = false;
+        let tw = egret.Tween.get(this.enemyFish);
+        let length = pathArr.length;
+        let i = 1;
+        if ( i < length) {
+            tw.to({x: pathArr[i][0]*40, y: pathArr[i][1]*40}, 500, egret.Ease.quartInOut).call(() => {
+                i++;
+                if (i >= length) {
+                    this.checked();
+                }
+            });
+        }
+    }
+
+    // 检测是否跟fish碰撞
+    private checked() {
+        
+    }
 
     private matrixMap() {
         const layerData = this.map.getChildByName('enemyLoad').layerData;
@@ -63,7 +99,7 @@ class EnemyMap extends egret.DisplayObjectContainer {
 
     private findPath(startX:number, startY:number, targetX:number, targetY:number) {
         //0代表可走，1代表不可走
-        console.log('矩形',this.matrixs)
+        //console.log('矩形',this.matrixs)
         let newPath:any = [];
         let gridBackup = this.grid.clone();
         const finder = new PF.AStarFinder();
@@ -71,9 +107,9 @@ class EnemyMap extends egret.DisplayObjectContainer {
         if (path.length) {
             // smoothenPath 平滑路径
             newPath = PF.Util.smoothenPath(gridBackup, path);
-            console.log('路径',path, newPath);
+            //console.log('路径',path, newPath);
         } else {
-            console.log('未找到路径');
+            //console.log('未找到路径');
         }
         return newPath;
     }

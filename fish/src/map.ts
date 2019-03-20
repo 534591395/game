@@ -39,7 +39,8 @@ class Map extends egret.DisplayObjectContainer {
             var bomb = tmxTileMap.getChildByName('bomb');
             self.bomb(bomb);
             self.setEnemyMap(tmxTileMap);
-
+            
+            // 泡泡鱼
             self.setFish();
             
             
@@ -94,6 +95,7 @@ class Map extends egret.DisplayObjectContainer {
         if( this.touchStatus ) {
             this.fish.x = evt.stageX - this.distance.x;
             this.fish.y = evt.stageY - this.distance.y;
+            this.enemyMap.setTarget(this.fish.x, this.fish.y);
         }
     }
 

@@ -65,7 +65,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="6" name="recycle" visible="0">
+ <objectgroup id="6" name="recycle">
   <object id="23" name="recycle1" x="360" y="0" width="82" height="72"/>
  </objectgroup>
  <objectgroup id="4" name="enemy" visible="0">

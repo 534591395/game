@@ -17,7 +17,7 @@ class Enemy extends egret.DisplayObjectContainer {
     }
 
     private onAddToStage() {
-        let fishBitmap = this.createBitmapByName("fish04_png");
+        let fishBitmap = this.createBitmapByName("bomp_3_png");
         fishBitmap.width = 40;
         fishBitmap.height = 40;
         fishBitmap.rotation = 0;
