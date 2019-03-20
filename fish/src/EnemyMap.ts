@@ -7,12 +7,16 @@ class EnemyMap extends egret.DisplayObjectContainer {
     private map_enemy1:Object;
     // 鲨鱼左边出生地
     private map_enemy2:Object;
+    // 地图矩形 0表示可通行，1表示不可通行
+    private matrixs:number[][];
+    // 格子地图
+    private grid:any;
     //map
     public map;
 
-    public constructor(map) {
+    public constructor(tmxTileMap) {
         super();
-        this.map = map;
+        this.map = tmxTileMap;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
@@ -21,47 +25,57 @@ class EnemyMap extends egret.DisplayObjectContainer {
         fish.x = 200;
         fish.y = 100;
         this.addChild(fish);
-        this.findPath();
         
-        const walkArr = ['01','30','41','22'];
-        this.matrixMap(walkArr);
+        this.matrixs = this.matrixMap();
+        this.grid = new PF.Grid(this.matrixs[0].length, this.matrixs.length, this.matrixs);
+
+        this.findPath(1,2,4,5);
     }
 
-    private matrixMap(walkArr) {
+    
+
+    private matrixMap() {
+        const layerData = this.map.getChildByName('enemyLoad').layerData;
+        let walkArr = [];
         let matrix = [];
-        
-        for (let h = 0; h < 3; h++) {
-            let tump = [];
-            for(let w = 0; w < 5; w ++) {
-            if (walkArr.indexOf(''+w+''+h)> -1) {
-                tump.push(1);
-            } else {
-                tump.push(0); 
-            }
-            }
-            matrix.push(tump);
+
+        // 首先创建行
+        for (let y = 0; y < layerData[0].length; y ++) {
+            matrix.push([]);
+        }
+
+        // 列
+        for (let x = 0; x < layerData.length; x++) {
+           // 行
+           for (let y = 0; y <layerData[x].length; y++) {
+               let tump = matrix[y];
+               // 若有值，表示可通行
+               if (layerData[x][y]) {
+                   tump.push(0);
+               } else {
+                   tump.push(1);
+               }
+           } 
         }
         
         return matrix;
     }
 
-    private findPath() {
+    private findPath(startX:number, startY:number, targetX:number, targetY:number) {
         //0代表可走，1代表不可走
-        var matrix = [     
-            [0, 0, 0, 1, 0],
-            [1, 0, 0, 0, 1],
-            [0, 0, 1, 0, 0]
-        ];
-        var grid = new PF.Grid(5, 3, matrix);
-        var gridBackup = grid.clone();
-        var finder = new PF.AStarFinder();
-        var path = finder.findPath(1, 2, 4, 2, gridBackup);
+        console.log('矩形',this.matrixs)
+        let newPath:any = [];
+        let gridBackup = this.grid.clone();
+        const finder = new PF.AStarFinder();
+        const path = finder.findPath(startX, startY, targetX, targetY, gridBackup);
         if (path.length) {
-            //var newPath = PF.Util.smoothenPath(gridBackup, path);
-            console.log(path);
+            // smoothenPath 平滑路径
+            newPath = PF.Util.smoothenPath(gridBackup, path);
+            console.log('路径',path, newPath);
         } else {
             console.log('未找到路径');
         }
+        return newPath;
     }
 
     

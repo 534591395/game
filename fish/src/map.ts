@@ -1,6 +1,12 @@
 class Map extends egret.DisplayObjectContainer {
     private enemyMap:EnemyMap;
     private bombMap:BombMap;
+    private fish:Fish;
+    //当前触摸状态，按下时，值为true
+    private touchStatus:boolean = false;
+    //鼠标点击时，鼠标全局坐标与_bird的位置差    http://developer.egret.com/cn/example/egret2d/index.html#060-interact-drag-drop
+    private distance:egret.Point = new egret.Point();
+
     public constructor() {
         super();
 
@@ -32,7 +38,9 @@ class Map extends egret.DisplayObjectContainer {
             
             var bomb = tmxTileMap.getChildByName('bomb');
             self.bomb(bomb);
-            self.enemy(tmxTileMap.getChildByName('enemy'));
+            self.setEnemyMap(tmxTileMap);
+
+            self.setFish();
             
             
             // tmxTileMap.touchEnabled = true;
@@ -40,8 +48,6 @@ class Map extends egret.DisplayObjectContainer {
         }, url);
    
     }
-    
-
 
 
     // 炸弹
@@ -51,23 +57,46 @@ class Map extends egret.DisplayObjectContainer {
         this.addChild(this.bombMap);
     }
 
-    // 鲨鱼
-    private enemy(enemy) {
-        this.enemyMap = new EnemyMap(enemy);
+    // 鲨鱼地图
+    private setEnemyMap(tmxTileMap) {
+        this.enemyMap = new EnemyMap(tmxTileMap);
         
         this.addChild(this.enemyMap);
     }
+
+    // 泡泡鱼
+    private setFish() {
+        // 泡泡鱼（纹理）种类：orangefish01 ,..., orangefish04
+        let fishBitmap:egret.Bitmap = this.createBitmapByName('orangefish01_png');
+        // 实例一个泡泡鱼
+        this.fish = new Fish(0,0,0, fishBitmap);
+        this.fish.scaleX = 0.5;
+        this.fish.scaleY = 0.5;
+        this.fish.touchEnabled = true;
+        this.fish.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.down, this);
+        this.fish.addEventListener(egret.TouchEvent.TOUCH_END, this.up, this);
+        this.addChild(this.fish);
+    }
     
-
-    // 获取地图对象的自定义属性
-    private getProperties(children,name:string) {
-
+    private down(evt:egret.TouchEvent) {
+        this.touchStatus = true;
+        this.distance.x = evt.stageX - this.fish.x;
+        this.distance.y = evt.stageY - this.fish.y;
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.move, this);
     }
 
-    private move(event:egret.TouchEvent) {
-        event.target.x -= 5;
-        event.target.y -= 5;
+    private up(evt:egret.TouchEvent) {
+        this.touchStatus = false;
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.move, this);
     }
+
+    private move(evt:egret.TouchEvent) {
+        if( this.touchStatus ) {
+            this.fish.x = evt.stageX - this.distance.x;
+            this.fish.y = evt.stageY - this.distance.y;
+        }
+    }
+
 
     private createBitmapByName(name: string) {
         let result = new egret.Bitmap();
