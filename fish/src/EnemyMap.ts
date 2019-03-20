@@ -55,19 +55,24 @@ class EnemyMap extends egret.DisplayObjectContainer {
         let tw = egret.Tween.get(this.enemyFish);
         let length = pathArr.length;
         let i = 1;
-        if ( i < length) {
+        let callback = () => {
             tw.to({x: pathArr[i][0]*40, y: pathArr[i][1]*40}, 500, egret.Ease.quartInOut).call(() => {
                 i++;
                 if (i >= length) {
                     this.checked();
+                } else {
+                    callback();
                 }
             });
+        }
+        if ( i < length) {
+            callback();
         }
     }
 
     // 检测是否跟fish碰撞
     private checked() {
-        
+
     }
 
     private matrixMap() {
