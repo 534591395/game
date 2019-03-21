@@ -1,6 +1,7 @@
 class Map extends egret.DisplayObjectContainer {
     private enemyMap:EnemyMap;
     private bombMap:BombMap;
+    private paopaoyun:PaoPaoYun;
     private fish:Fish;
     //当前触摸状态，按下时，值为true
     private touchStatus:boolean = false;
@@ -45,7 +46,7 @@ class Map extends egret.DisplayObjectContainer {
 
             self.paopao();
 
-            self.paopaoyun(tmxTileMap);
+            self.setPaopaoyun(tmxTileMap);
             
             
             // tmxTileMap.touchEnabled = true;
@@ -68,14 +69,20 @@ class Map extends egret.DisplayObjectContainer {
     }
 
     // 泡泡弹床
-    private paopaoyun(tmxTileMap) {
-        var paopaoyun = tmxTileMap.getChildByName('paopaoyun');
-        var texture = RES.getRes("paopaoParticle_png");
-        var config = RES.getRes("paopaoyun_json");
-        var particleSys = new particle.GravityParticleSystem(texture,config);
-        particleSys.y = this.stage.stageHeight - 80;
-        this.addChild(particleSys);
-        particleSys.start();
+    private setPaopaoyun(tmxTileMap) {
+        this.paopaoyun = new PaoPaoYun(tmxTileMap);
+        this.addChild(this.paopaoyun);
+        this.paopaoyun.start();
+        let y = this.paopaoyun.y;
+
+        let callback = () => {
+            setTimeout(() => {
+                egret.Tween.get(this.paopaoyun)
+                .to({y: y-20}, 500, egret.Ease.quartInOut)
+            }, 2000);
+        };
+
+        callback();
     }
 
 
