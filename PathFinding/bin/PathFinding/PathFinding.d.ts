@@ -187,7 +187,7 @@ declare module PF {
          * 构造函数
          * @param option 寻路选项
          */
-        constructor(option: Option);
+        constructor(option?: Option);
         /**
          * 搜索路径
          * @param startX 起始位置横坐标

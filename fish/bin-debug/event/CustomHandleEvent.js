@@ -37,4 +37,3 @@ var CustomHandleEvent = (function (_super) {
     return CustomHandleEvent;
 }(egret.Event));
 __reflect(CustomHandleEvent.prototype, "CustomHandleEvent");
-//# sourceMappingURL=CustomHandleEvent.js.map

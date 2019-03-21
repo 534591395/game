@@ -22,12 +22,12 @@ var FishEmitter = (function (_super) {
     }
     FishEmitter.prototype.update = function () {
         for (var i = 0; i < this.particles.length; i++) {
-            var particle = this.particles[i];
-            if (!particle.enabled)
+            var particle_1 = this.particles[i];
+            if (!particle_1.enabled)
                 continue;
-            particle.update();
-            if (!particle.enabled)
-                this.removeParticle(particle);
+            particle_1.update();
+            if (!particle_1.enabled)
+                this.removeParticle(particle_1);
         }
     };
     FishEmitter.prototype.removeParticle = function (particle) {
@@ -52,18 +52,18 @@ var FishEmitter = (function (_super) {
     // 爆炸效果
     FishEmitter.prototype.makeExplosion = function (xpos, ypos) {
         for (var i = 0; i < 30; i++) {
-            var particle = this.makeParticle();
-            particle.x = xpos;
-            particle.y = ypos;
-            particle.xVel = Math.random() - 0.5;
-            particle.yVel = Math.random() - 0.5;
-            particle.zVel = Math.random() - 0.5;
-            var speed = Math.sqrt((particle.xVel * particle.xVel) + (particle.yVel * particle.yVel) + (particle.zVel * particle.zVel));
-            particle.xVel *= 40 / speed;
-            particle.yVel *= 40 / speed;
-            particle.zVel *= 40 / speed;
-            particle.size = 1.5;
-            particle.update();
+            var particle_2 = this.makeParticle();
+            particle_2.x = xpos;
+            particle_2.y = ypos;
+            particle_2.xVel = Math.random() - 0.5;
+            particle_2.yVel = Math.random() - 0.5;
+            particle_2.zVel = Math.random() - 0.5;
+            var speed = Math.sqrt((particle_2.xVel * particle_2.xVel) + (particle_2.yVel * particle_2.yVel) + (particle_2.zVel * particle_2.zVel));
+            particle_2.xVel *= 40 / speed;
+            particle_2.yVel *= 40 / speed;
+            particle_2.zVel *= 40 / speed;
+            particle_2.size = 1.5;
+            particle_2.update();
         }
     };
     // 清除所有界面上的粒子
@@ -78,4 +78,3 @@ var FishEmitter = (function (_super) {
     return FishEmitter;
 }(egret.DisplayObjectContainer));
 __reflect(FishEmitter.prototype, "FishEmitter");
-//# sourceMappingURL=FishEmitter.js.map

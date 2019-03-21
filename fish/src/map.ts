@@ -42,12 +42,22 @@ class Map extends egret.DisplayObjectContainer {
             
             // 泡泡鱼
             self.setFish();
+
+            self.paopao();
             
             
             // tmxTileMap.touchEnabled = true;
             // tmxTileMap.addEventListener(egret.TouchEvent.TOUCH_TAP, self.move, self);
         }, url);
    
+    }
+
+    private paopao() {
+        var texture = RES.getRes("paopaoParticle_png");
+        var config = RES.getRes("paopaoParticle_json");
+        var particleSys = new particle.GravityParticleSystem(texture,config);
+        this.addChild(particleSys);
+        particleSys.start();
     }
 
 

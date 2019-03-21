@@ -37,6 +37,10 @@
     {
       "name": "pathFinding",
       "path": "../PathFinding"
+    },
+    {
+      "name": "particle",
+      "path": "../particle/libsrc"
     }
   ]
 }

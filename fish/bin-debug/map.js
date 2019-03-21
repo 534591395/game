@@ -12,6 +12,10 @@ var Map = (function (_super) {
     __extends(Map, _super);
     function Map() {
         var _this = _super.call(this) || this;
+        //当前触摸状态，按下时，值为true
+        _this.touchStatus = false;
+        //鼠标点击时，鼠标全局坐标与_bird的位置差    http://developer.egret.com/cn/example/egret2d/index.html#060-interact-drag-drop
+        _this.distance = new egret.Point();
         _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
@@ -26,22 +30,18 @@ var Map = (function (_super) {
         //load complete
         urlLoader.addEventListener(egret.Event.COMPLETE, function (event) {
             var data = egret.XML.parse(event.target.data);
-            var tmxTileMap = new tiled.TMXTilemap(2000, 2000, data, url);
+            var tmxTileMap = new tiled.TMXTilemap(800, 480, data, url);
             tmxTileMap.render();
             self.addChild(tmxTileMap);
-            // var bomb = tmxTileMap.getChildByName('bomb');
-            // self.bomb(bomb);
             var bomb = tmxTileMap.getChildByName('bomb');
             self.bomb(bomb);
-            self.enemy(tmxTileMap.getChildByName('enemy'));
+            var bomb = tmxTileMap.getChildByName('bomb');
+            self.bomb(bomb);
+            self.setEnemyMap(tmxTileMap);
+            // 泡泡鱼
+            self.setFish();
             // tmxTileMap.touchEnabled = true;
             // tmxTileMap.addEventListener(egret.TouchEvent.TOUCH_TAP, self.move, self);
-            var matrix = [
-                [0, 0, 0, 1, 0],
-                [1, 0, 0, 0, 1],
-                [0, 0, 1, 0, 0]
-            ];
-            var grid = new PF.Grid(5, 3, matrix);
         }, url);
     };
     // 炸弹
@@ -49,17 +49,40 @@ var Map = (function (_super) {
         this.bombMap = new BombMap(bomb);
         this.addChild(this.bombMap);
     };
-    // 鲨鱼
-    Map.prototype.enemy = function (enemy) {
-        this.enemyMap = new EnemyMap(enemy);
+    // 鲨鱼地图
+    Map.prototype.setEnemyMap = function (tmxTileMap) {
+        this.enemyMap = new EnemyMap(tmxTileMap);
         this.addChild(this.enemyMap);
     };
-    // 获取地图对象的自定义属性
-    Map.prototype.getProperties = function (children, name) {
+    // 泡泡鱼
+    Map.prototype.setFish = function () {
+        // 泡泡鱼（纹理）种类：orangefish01 ,..., orangefish04
+        var fishBitmap = this.createBitmapByName('orangefish01_png');
+        // 实例一个泡泡鱼
+        this.fish = new Fish(0, 0, 0, fishBitmap);
+        this.fish.scaleX = 0.5;
+        this.fish.scaleY = 0.5;
+        this.fish.touchEnabled = true;
+        this.fish.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.down, this);
+        this.fish.addEventListener(egret.TouchEvent.TOUCH_END, this.up, this);
+        this.addChild(this.fish);
     };
-    Map.prototype.move = function (event) {
-        event.target.x -= 5;
-        event.target.y -= 5;
+    Map.prototype.down = function (evt) {
+        this.touchStatus = true;
+        this.distance.x = evt.stageX - this.fish.x;
+        this.distance.y = evt.stageY - this.fish.y;
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.move, this);
+    };
+    Map.prototype.up = function (evt) {
+        this.touchStatus = false;
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.move, this);
+    };
+    Map.prototype.move = function (evt) {
+        if (this.touchStatus) {
+            this.fish.x = evt.stageX - this.distance.x;
+            this.fish.y = evt.stageY - this.distance.y;
+            this.enemyMap.setTarget(this.fish.x, this.fish.y);
+        }
     };
     Map.prototype.createBitmapByName = function (name) {
         var result = new egret.Bitmap();
@@ -71,4 +94,3 @@ var Map = (function (_super) {
     return Map;
 }(egret.DisplayObjectContainer));
 __reflect(Map.prototype, "Map");
-//# sourceMappingURL=map.js.map

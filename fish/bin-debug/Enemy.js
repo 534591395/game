@@ -22,7 +22,7 @@ var Enemy = (function (_super) {
         return _this;
     }
     Enemy.prototype.onAddToStage = function () {
-        var fishBitmap = this.createBitmapByName("fish04_png");
+        var fishBitmap = this.createBitmapByName("bomp_3_png");
         fishBitmap.width = 40;
         fishBitmap.height = 40;
         fishBitmap.rotation = 0;
@@ -46,4 +46,3 @@ var Enemy = (function (_super) {
     return Enemy;
 }(egret.DisplayObjectContainer));
 __reflect(Enemy.prototype, "Enemy");
-//# sourceMappingURL=Enemy.js.map

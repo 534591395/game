@@ -13,8 +13,6 @@ class EnemyMap extends egret.DisplayObjectContainer {
     private grid:any;
     // 敌人
     private enemyFish:Enemy;
-    // 敌人缓动动画对象
-    private tw;
     //map
     public map;
 
@@ -32,8 +30,6 @@ class EnemyMap extends egret.DisplayObjectContainer {
         
         this.matrixs = this.matrixMap();
         this.grid = new PF.Grid(this.matrixs[0].length, this.matrixs.length, this.matrixs);
-
-        //this.tw = egret.Tween.get(this.enemyFish);
     }
 
     public setTarget(targetX, targetY) {

@@ -59,4 +59,3 @@ var LoadingUI = (function (_super) {
     return LoadingUI;
 }(eui.Component));
 __reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
-//# sourceMappingURL=LoadingUI.js.map

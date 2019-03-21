@@ -10,7 +10,8 @@
 		"libs/modules/dragonBones/dragonBones.js",
 		"libs/modules/promise/promise.js",
 		"libs/modules/tiled/tiled.js",
-		"libs/modules/pathFinding/pathFinding.js"
+		"libs/modules/pathFinding/pathFinding.js",
+		"libs/modules/particle/particle.js"
 	],
 	"game": [
 		"bin-debug/Level.js",

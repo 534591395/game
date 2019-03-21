@@ -42,4 +42,3 @@ var BombMap = (function (_super) {
     return BombMap;
 }(egret.DisplayObjectContainer));
 __reflect(BombMap.prototype, "BombMap");
-//# sourceMappingURL=BombMap.js.map
