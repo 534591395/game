@@ -45,7 +45,7 @@ class Map extends egret.DisplayObjectContainer {
 
             self.paopao();
 
-            self.paopaoyun();
+            self.paopaoyun(tmxTileMap);
             
             
             // tmxTileMap.touchEnabled = true;
@@ -68,10 +68,12 @@ class Map extends egret.DisplayObjectContainer {
     }
 
     // 泡泡弹床
-    private paopaoyun() {
+    private paopaoyun(tmxTileMap) {
+        var paopaoyun = tmxTileMap.getChildByName('paopaoyun');
         var texture = RES.getRes("paopaoParticle_png");
         var config = RES.getRes("paopaoyun_json");
         var particleSys = new particle.GravityParticleSystem(texture,config);
+        particleSys.y = this.stage.stageHeight - 80;
         this.addChild(particleSys);
         particleSys.start();
     }
