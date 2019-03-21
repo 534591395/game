@@ -35,10 +35,10 @@
 ,"startRotationVariance":0
 ,"endRed":255
 ,"engGreenVariance":0
-,"gravity":{"x":110,"y":-100}
+,"gravity":{"x":110,"y":-1200}
 ,"maxParticles":100
 ,"endAlpha":1
-,"speed":300
+,"speed":0
 ,"startGreenVariance":0
 ,"emitAngleVariance":0
 ,"speedVariance":0
