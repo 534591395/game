@@ -44,6 +44,8 @@ class Map extends egret.DisplayObjectContainer {
             self.setFish();
 
             self.paopao();
+
+            self.paopaoyun();
             
             
             // tmxTileMap.touchEnabled = true;
@@ -51,7 +53,8 @@ class Map extends egret.DisplayObjectContainer {
         }, url);
    
     }
-
+    
+    // 水泡泡（从下往上）
     private paopao() {
         var texture = RES.getRes("paopaoParticle_png");
         var config = RES.getRes("paopaoParticle_json");
@@ -62,6 +65,15 @@ class Map extends egret.DisplayObjectContainer {
         setTimeout(() => {
             particleSys.stop();
         }, 2000);
+    }
+
+    // 泡泡弹床
+    private paopaoyun() {
+        var texture = RES.getRes("paopaoParticle_png");
+        var config = RES.getRes("paopaoyun_json");
+        var particleSys = new particle.GravityParticleSystem(texture,config);
+        this.addChild(particleSys);
+        particleSys.start();
     }
 
 

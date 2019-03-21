@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,startBtn,orangefish01_png,orangefish02_png,orangefish03_png,orangefish04_png,orangeParticle_png,parallaxBack_jpg,parallaxFront_png,tip,loading_3_png,next_png,win_png,bomp_1_png,bomp_2_png,bomp_3_png,bomp_4_png,bg_2_png,fish01_png,fish02_png,fish03_png,bg_1_png,fish04_png,paopaoParticle_png,paopaoParticle_json,paopao_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,startBtn,orangefish01_png,orangefish02_png,orangefish03_png,orangefish04_png,orangeParticle_png,parallaxBack_jpg,parallaxFront_png,tip,loading_3_png,next_png,win_png,bomp_1_png,bomp_2_png,bomp_3_png,bomp_4_png,bg_2_png,fish01_png,fish02_png,fish03_png,bg_1_png,fish04_png,paopaoParticle_png,paopaoParticle_json,paopao_png,paopaoyun_json",
 			"name": "preload"
 		},
 		{
@@ -318,6 +318,11 @@
 			"name": "paopao_png",
 			"type": "image",
 			"url": "assets/paopao.png"
+		},
+		{
+			"name": "paopaoyun_json",
+			"type": "json",
+			"url": "assets/paopaoyun.json"
 		}
 	]
 }

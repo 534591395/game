@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="left-up" width="20" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="12" nextobjectid="24">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="left-up" width="20" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="13" nextobjectid="24">
  <tileset firstgid="1" name="bg_1" tilewidth="40" tileheight="40" tilecount="240" columns="20">
   <image source="bg_1.png" width="800" height="480"/>
  </tileset>
@@ -31,6 +31,22 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="12" name="fishLoad" width="20" height="12">
+  <data encoding="csv">
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
+0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -72,7 +88,7 @@
   <object id="20" name="enemy2" x="0" y="120" width="78" height="78"/>
   <object id="21" name="enemy1" x="722" y="241.5" width="77" height="76"/>
  </objectgroup>
- <objectgroup id="5" name="fish" visible="0">
-  <object id="22" name="fish1" x="321" y="401" width="158" height="79"/>
+ <objectgroup id="5" name="fish">
+  <object id="22" name="fish1" x="361" y="399" width="77" height="83"/>
  </objectgroup>
 </map>
