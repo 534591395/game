@@ -38,6 +38,9 @@ export class WxgamePlugin implements plugins.Command {
                 if (filename === "libs/modules/pathFinding/PathFinding.js" || filename === "libs/modules/pathFinding/PathFinding.min.js") {
                     //content += ';window.PF = PF';
                 }
+                if (filename === "libs/modules/particle/particle.js" || filename === "libs/modules/particle/particle.min.js") {
+                    content += ';window.particle = particle';
+                }
                 content = "var egret = window.egret;" + content;
                 if (filename == 'main.js') {
                     content += "\n;window.Main = Main;"
