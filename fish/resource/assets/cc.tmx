@@ -19,7 +19,7 @@
 221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240
 </data>
  </layer>
- <layer id="11" name="enemyLoad" width="20" height="12">
+ <layer id="11" name="enemyLoad" width="20" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -35,7 +35,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="12" name="fishLoad" width="20" height="12">
+ <layer id="12" name="fishLoad" width="20" height="12" visible="0">
   <data encoding="csv">
 0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
 0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,
@@ -51,7 +51,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="bomb">
+ <objectgroup id="2" name="bomb" visible="0">
   <object id="12" name="bomb4" x="217" y="271">
    <properties>
     <property name="height" type="int" value="40"/>
@@ -84,11 +84,11 @@
  <objectgroup id="6" name="recycle">
   <object id="23" name="recycle1" x="360" y="0" width="82" height="72"/>
  </objectgroup>
- <objectgroup id="4" name="enemy">
+ <objectgroup id="4" name="enemy" visible="0">
   <object id="20" name="enemy2" x="0" y="120" width="78" height="78"/>
   <object id="21" name="enemy1" x="722" y="241.5" width="77" height="76"/>
  </objectgroup>
- <objectgroup id="5" name="fish">
+ <objectgroup id="5" name="fish" visible="0">
   <object id="22" name="fish1" x="361" y="399" width="77" height="83"/>
  </objectgroup>
 </map>

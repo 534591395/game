@@ -1,5 +1,5 @@
 {
-"texture":"paopaoParticle.png",
+"texture":"newParticle.png",
 "radialAccelerationVariance":0
 ,"duration":-1
 ,"startBlue":255
@@ -28,7 +28,7 @@
 ,"engGreenVariance":0
 ,"emitAngle":0
 ,"startGreen":255
-,"emitterVariance":{"x":446,"y":20}
+,"emitterVariance":{"x":877,"y":20}
 ,"emitAngleVariance":360
 ,"endSizeVariance":5
 ,"startRotation":0
