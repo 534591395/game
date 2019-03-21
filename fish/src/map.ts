@@ -58,6 +58,10 @@ class Map extends egret.DisplayObjectContainer {
         var particleSys = new particle.GravityParticleSystem(texture,config);
         this.addChild(particleSys);
         particleSys.start();
+
+        setTimeout(() => {
+            particleSys.stop();
+        }, 2000);
     }
 
 
