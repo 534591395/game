@@ -38,15 +38,15 @@ class VirtualJoystick extends eui.Component {
     }
 
     public start() {
-		this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
-		this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
-        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+		this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
+		this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
     }
 
     public stop() {
-		this.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
-		this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
-        this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+		this.stage.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
+		this.stage.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
     }
     
     // 触摸开始

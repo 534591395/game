@@ -43,14 +43,14 @@ var VirtualJoystick = (function (_super) {
         this.ball.y = this.centerY;
     };
     VirtualJoystick.prototype.start = function () {
-        this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
-        this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
-        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
     };
     VirtualJoystick.prototype.stop = function () {
-        this.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
-        this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
-        this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
     };
     // 触摸开始
     VirtualJoystick.prototype.onTouchBegin = function (e) {
