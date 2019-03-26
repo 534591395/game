@@ -68,7 +68,7 @@ var Map = (function (_super) {
     Map.prototype.onVJStart = function () {
         this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
     };
-    // 触摸摇杆的角度改变，人泡泡鱼的移动速度方向也随之改变
+    // 触摸摇杆的角度改变，泡泡鱼的移动速度方向也随之改变
     Map.prototype.onVJChange = function (e) {
         var angle = e.data;
         this.speedX = Math.cos(angle) * this.speed;
@@ -82,6 +82,18 @@ var Map = (function (_super) {
     Map.prototype.onEnterFrame = function () {
         this.fish.x += this.speedX;
         this.fish.y += this.speedY;
+        if (this.fish.x > (this.stage.stageWidth + this.fish.width)) {
+            this.fish.x = 0;
+        }
+        if (this.fish.x < -this.fish.width) {
+            this.fish.x = this.stage.stageWidth;
+        }
+        if (this.fish.y < -this.fish.height) {
+            this.fish.y = this.stage.stageHeight;
+        }
+        if (this.fish.y > (this.stage.stageHeight + this.fish.height)) {
+            this.fish.y = 0;
+        }
     };
     // 水泡泡（从下往上）
     Map.prototype.paopao = function () {
@@ -125,8 +137,8 @@ var Map = (function (_super) {
         var fishBitmap = this.createBitmapByName('orangefish01_png');
         // 实例一个泡泡鱼
         this.fish = new Fish(0, 0, 0, fishBitmap);
-        this.fish.scaleX = 0.5;
-        this.fish.scaleY = 0.5;
+        this.fish.scaleX = 0.3;
+        this.fish.scaleY = 0.3;
         this.fish.touchEnabled = true;
         this.fish.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.down, this);
         this.fish.addEventListener(egret.TouchEvent.TOUCH_END, this.up, this);
