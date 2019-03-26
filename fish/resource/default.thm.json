@@ -33,6 +33,7 @@
 		"resource/skins/level.exml",
 		"resource/skins/loading.exml",
 		"resource/skins/tip.exml",
+		"resource/skins/VirtualJoystickSkin.exml",
 		"resource/skins/win.exml"
 	],
 	"path": "resource/default.thm.json"

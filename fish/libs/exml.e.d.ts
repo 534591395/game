@@ -56,5 +56,7 @@ declare class loading extends eui.Skin{
 }
 declare class startBtn extends eui.Skin{
 }
+declare class VirtualJoystickSkin extends eui.Skin{
+}
 declare class win extends eui.Skin{
 }

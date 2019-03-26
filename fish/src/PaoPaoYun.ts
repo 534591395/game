@@ -20,7 +20,8 @@ class PaoPaoYun extends egret.DisplayObjectContainer {
             if (i == 0) {
                 const attributes = item.attributes;
                 this.particleSys.x = 0;
-                this.particleSys.y = attributes.y - this.particleSys.emitterY; //attributes.y - this.particleSys.emitterY
+                this.particleSys.y = attributes.y - this.particleSys.emitterY - 20; //attributes.y - this.particleSys.emitterY
+                
                 this.addChild(this.particleSys);
             }
         });

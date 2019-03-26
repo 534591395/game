@@ -7,6 +7,12 @@ class Map extends egret.DisplayObjectContainer {
     private touchStatus:boolean = false;
     //鼠标点击时，鼠标全局坐标与_bird的位置差    http://developer.egret.com/cn/example/egret2d/index.html#060-interact-drag-drop
     private distance:egret.Point = new egret.Point();
+    // 虚拟摇杆
+    private vj:VirtualJoystick;
+    // 泡泡鱼移动速度
+	private speedX = 0;         
+	private speedY = 0;
+	private speed = 10;
 
     public constructor() {
         super();
@@ -18,19 +24,24 @@ class Map extends egret.DisplayObjectContainer {
         this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
 
         var self = this;
-        var url: string = "https://wxgame.dreamrabbit.tech/game/resource/assets/cc.tmx";
-        //var url: string = "resource/assets/cc.tmx";
+        //var url: string = "https://wxgame.dreamrabbit.tech/game/resource/assets/cc.tmx";
+        var url: string = "resource/assets/cc.tmx";
         var urlLoader:egret.URLLoader = new egret.URLLoader();
         urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
         urlLoader.load(new egret.URLRequest(url));
         //load complete
         urlLoader.addEventListener(egret.Event.COMPLETE, function (event:egret.Event):void {
+
+            
             
             var data:any = egret.XML.parse(event.target.data);
             
             var tmxTileMap:tiled.TMXTilemap = new tiled.TMXTilemap(800, 480, data, url);
             
             tmxTileMap.render();
+            //self.stage.stageHeight
+            
+            self.addChild(tmxTileMap);
             self.addChild(tmxTileMap);
             
             var bomb = tmxTileMap.getChildByName('bomb');
@@ -49,11 +60,49 @@ class Map extends egret.DisplayObjectContainer {
             self.setPaopaoyun(tmxTileMap);
             
             
+            self.setVJ();
+            
+            
             // tmxTileMap.touchEnabled = true;
             // tmxTileMap.addEventListener(egret.TouchEvent.TOUCH_TAP, self.move, self);
         }, url);
    
     }
+
+    // 虚拟摇杆
+    private setVJ() {
+        this.vj = new VirtualJoystick();
+        this.vj.x = this.vj.width/2;
+        this.vj.y = this.stage.stageHeight - this.vj.height/2;
+        this.addChild(this.vj);
+		this.vj.start();
+		this.vj.addEventListener("vj_start",this.onVJStart, this);
+		this.vj.addEventListener("vj_move", this.onVJChange, this);
+		this.vj.addEventListener("vj_end", this.onVJEnd, this);
+    }
+    
+    // 摇杆启动，泡泡鱼开始根据摇杆移动
+    private onVJStart() {
+        this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
+    }
+
+	// 触摸摇杆的角度改变，人泡泡鱼的移动速度方向也随之改变
+	private onVJChange(e:egret.Event){
+		const angle = e.data;
+		this.speedX = Math.cos(angle)*this.speed;
+		this.speedY = Math.sin(angle)*this.speed;
+	}
+
+	// 停止摇杆，泡泡鱼停止移动
+	private onVJEnd(){
+		this.removeEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
+	}
+
+	//每帧更新，泡泡鱼移动
+	private onEnterFrame(){
+        this.fish.x += this.speedX;
+        this.fish.y += this.speedY;
+	}
     
     // 水泡泡（从下往上）
     private paopao() {
@@ -82,7 +131,7 @@ class Map extends egret.DisplayObjectContainer {
             }, 2000);
         };
 
-        callback();
+        //callback();
     }
 
 
