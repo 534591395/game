@@ -102,8 +102,8 @@ class Map extends egret.DisplayObjectContainer {
 	private onEnterFrame(){
         this.fish.x += this.speedX;
         this.fish.y += this.speedY;
-        if (this.fish.x > (this.stage.stageWidth - this.fish.width/2)) {
-            this.fish.x = this.stage.stageWidth - this.fish.width/2;
+        if (this.fish.x > (this.stage.stageWidth - this.fish.width/4)) {
+            this.fish.x = this.stage.stageWidth - this.fish.width/4;
         }
         if (this.fish.x < 0) {
             this.fish.x = 0;
