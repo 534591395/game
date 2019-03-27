@@ -11,15 +11,15 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var EnemyMap = (function (_super) {
-    __extends(EnemyMap, _super);
-    function EnemyMap(tmxTileMap) {
+var FishMap = (function (_super) {
+    __extends(FishMap, _super);
+    function FishMap(tmxTileMap) {
         var _this = _super.call(this) || this;
         _this.map = tmxTileMap;
         _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
-    EnemyMap.prototype.onAddToStage = function () {
+    FishMap.prototype.onAddToStage = function () {
         this.enemyFish = new Enemy();
         this.enemyFish.x = 1 * 40;
         this.enemyFish.y = 3 * 40;
@@ -27,7 +27,7 @@ var EnemyMap = (function (_super) {
         this.matrixs = this.matrixMap();
         this.grid = new PF.Grid(this.matrixs[0].length, this.matrixs.length, this.matrixs);
     };
-    EnemyMap.prototype.setTarget = function (targetX, targetY) {
+    FishMap.prototype.setTarget = function (targetX, targetY) {
         var fishW = Math.ceil(targetX / 40);
         var FishH = Math.ceil(targetY / 40);
         var enemyFishW = Math.ceil(this.enemyFish.x / 40);
@@ -36,7 +36,7 @@ var EnemyMap = (function (_super) {
         this.animation(pathArr);
     };
     // 动画
-    EnemyMap.prototype.animation = function (pathArr) {
+    FishMap.prototype.animation = function (pathArr) {
         var _this = this;
         var isFinish = false;
         var tw = egret.Tween.get(this.enemyFish);
@@ -58,9 +58,9 @@ var EnemyMap = (function (_super) {
         }
     };
     // 检测是否跟fish碰撞
-    EnemyMap.prototype.checked = function () {
+    FishMap.prototype.checked = function () {
     };
-    EnemyMap.prototype.matrixMap = function () {
+    FishMap.prototype.matrixMap = function () {
         var layerData = this.map.getChildByName('fishLoad').layerData;
         var walkArr = [];
         var matrix = [];
@@ -84,7 +84,7 @@ var EnemyMap = (function (_super) {
         }
         return matrix;
     };
-    EnemyMap.prototype.findPath = function (startX, startY, targetX, targetY) {
+    FishMap.prototype.findPath = function (startX, startY, targetX, targetY) {
         //0代表可走，1代表不可走
         //console.log('矩形',this.matrixs)
         var newPath = [];
@@ -101,6 +101,6 @@ var EnemyMap = (function (_super) {
         }
         return newPath;
     };
-    return EnemyMap;
+    return FishMap;
 }(egret.DisplayObjectContainer));
-__reflect(EnemyMap.prototype, "EnemyMap");
+__reflect(FishMap.prototype, "FishMap");

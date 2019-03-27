@@ -22,6 +22,8 @@ var VirtualJoystick = (function (_super) {
         // 中心点坐标
         _this.centerX = 0;
         _this.centerY = 0;
+        // 触摸ID
+        _this.touchID = null;
         //触摸移动，设置小球的位置
         _this.p1 = new egret.Point();
         _this.p2 = new egret.Point();
@@ -54,9 +56,9 @@ var VirtualJoystick = (function (_super) {
     };
     // 触摸开始
     VirtualJoystick.prototype.onTouchBegin = function (e) {
-        // if(this.parent){
-        // 	return;
-        // }
+        if (e.target.name !== 'ball') {
+            return;
+        }
         // 说明：当按下时，不停移动，若放开表示
         this.touchID = e.touchPointID;
         this.dispatchEvent(new egret.Event("vj_start"));
@@ -66,6 +68,7 @@ var VirtualJoystick = (function (_super) {
         if (this.touchID != e.touchPointID) {
             return;
         }
+        this.touchID = null;
         this.dispatchEvent(new egret.Event("vj_end"));
     };
     VirtualJoystick.prototype.onTouchMove = function (e) {
@@ -89,6 +92,7 @@ var VirtualJoystick = (function (_super) {
             this.ball.x = Math.cos(angle) * (this.circleRadius - this.ballRadius) + this.centerX;
             this.ball.y = Math.sin(angle) * (this.circleRadius - this.ballRadius) + this.centerY;
         }
+        // 关于dispatchEventWith 和 dispatchEvent ，具体请查看文档  http://developer.egret.com/cn/apidoc/index/name/egret.EventDispatcher#dispatchEvent
         this.dispatchEventWith("vj_move", false, angle);
     };
     return VirtualJoystick;

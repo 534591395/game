@@ -2,7 +2,7 @@
  * 敌人地图：鲨鱼，包含自动寻路、碰到泡泡鱼爆炸吃掉
  */
 
-class EnemyMap extends egret.DisplayObjectContainer {
+class FishMap extends egret.DisplayObjectContainer {
     // 鲨鱼右边出生地
     private map_enemy1:Object;
     // 鲨鱼左边出生地

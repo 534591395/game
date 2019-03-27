@@ -15,7 +15,7 @@ class VirtualJoystick extends eui.Component {
     private centerX:number = 0;
     private centerY:number = 0;
     // 触摸ID
-    private touchID:number;
+    private touchID:any = null;
 
     public constructor() {
         super();
@@ -51,9 +51,9 @@ class VirtualJoystick extends eui.Component {
     
     // 触摸开始
     private onTouchBegin(e:egret.TouchEvent) {
-		// if(this.parent){
-		// 	return;
-		// }
+		if(e.target.name !== 'ball'){
+			return;
+		}
         // 说明：当按下时，不停移动，若放开表示
         this.touchID = e.touchPointID;
         this.dispatchEvent(new egret.Event("vj_start"));
@@ -64,6 +64,7 @@ class VirtualJoystick extends eui.Component {
 		if(this.touchID != e.touchPointID){
 			return;
 		}
+		this.touchID = null;
         this.dispatchEvent(new egret.Event("vj_end"));
     }
     
@@ -91,7 +92,7 @@ class VirtualJoystick extends eui.Component {
 			this.ball.x = Math.cos(angle)*(this.circleRadius - this.ballRadius) + this.centerX;
 			this.ball.y = Math.sin(angle)*(this.circleRadius - this.ballRadius) + this.centerY;
 		}
-
+        // 关于dispatchEventWith 和 dispatchEvent ，具体请查看文档  http://developer.egret.com/cn/apidoc/index/name/egret.EventDispatcher#dispatchEvent
         this.dispatchEventWith("vj_move", false, angle);
     }
 

@@ -18,6 +18,7 @@
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/Bomb.js",
 		"bin-debug/BombMap.js",
+		"bin-debug/Bullet.js",
 		"bin-debug/Enemy.js",
 		"bin-debug/EnemyMap.js",
 		"bin-debug/Fish.js",
@@ -30,6 +31,7 @@
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/map.js",
+		"bin-debug/PaoPaoFish.js",
 		"bin-debug/PaoPaoYun.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ScorePanel.js",
@@ -37,6 +39,7 @@
 		"bin-debug/TipView.js",
 		"bin-debug/VirtualJoystick.js",
 		"bin-debug/Win.js",
-		"bin-debug/event/CustomHandleEvent.js"
+		"bin-debug/event/CustomHandleEvent.js",
+		"bin-debug/utils/GameUtil.js"
 	]
 }
