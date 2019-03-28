@@ -66,6 +66,9 @@ class VirtualJoystick extends eui.Component {
 		}
 		this.touchID = null;
         this.dispatchEvent(new egret.Event("vj_end"));
+		//设置小球初始位置
+		this.ball.x = this.centerX;
+		this.ball.y = this.centerY;
     }
     
 	//触摸移动，设置小球的位置

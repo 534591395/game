@@ -71,7 +71,6 @@ class Map extends egret.DisplayObjectContainer {
             // tmxTileMap.touchEnabled = true;
             // tmxTileMap.addEventListener(egret.TouchEvent.TOUCH_TAP, self.move, self);
         }, url);
-   
     }
 
     // 虚拟摇杆
@@ -105,21 +104,6 @@ class Map extends egret.DisplayObjectContainer {
 
 	//每帧更新，泡泡鱼移动
 	private onEnterFrame(){
-        // this.fish.x += this.speedX;
-        // this.fish.y += this.speedY;
-        // if (this.fish.x > (this.stage.stageWidth - this.fish.width/4)) {
-        //     this.fish.x = this.stage.stageWidth - this.fish.width/4;
-        // }
-        // if (this.fish.x < 0) {
-        //     this.fish.x = 0;
-        // }
-        // if (this.fish.y < 0) {
-        //     this.fish.y = 0;
-        // }
-        // if (this.fish.y > (this.stage.stageHeight - this.fish.height/2)) {
-        //     this.fish.y = this.stage.stageHeight - this.fish.height/2;
-        // }
-
         this.paopaoFish.x += this.speedX;
         this.paopaoFish.y += this.speedY;
         if (this.paopaoFish.x > (this.stage.stageWidth - this.paopaoFish.width/4)) {

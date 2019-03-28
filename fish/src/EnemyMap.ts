@@ -3,7 +3,7 @@
  */
 
 class EnemyMap extends egret.DisplayObjectContainer {
-    // 鲨鱼右边出生地
+    // 鲨鱼右边目的地
     private map_enemy1:Object;
     // 鲨鱼左边出生地
     private map_enemy2:Object;
@@ -30,6 +30,8 @@ class EnemyMap extends egret.DisplayObjectContainer {
         
         this.matrixs = this.matrixMap();
         this.grid = new PF.Grid(this.matrixs[0].length, this.matrixs.length, this.matrixs);
+
+        this.siteMap();
     }
 
     public setTarget(targetX, targetY) {
@@ -43,6 +45,11 @@ class EnemyMap extends egret.DisplayObjectContainer {
         
 
         this.animation(pathArr);
+    }
+
+    // 设置出身地和目的地
+    private siteMap() {
+
     }
     
     // 动画

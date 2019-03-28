@@ -26,6 +26,7 @@ var EnemyMap = (function (_super) {
         this.addChild(this.enemyFish);
         this.matrixs = this.matrixMap();
         this.grid = new PF.Grid(this.matrixs[0].length, this.matrixs.length, this.matrixs);
+        this.siteMap();
     };
     EnemyMap.prototype.setTarget = function (targetX, targetY) {
         var fishW = Math.ceil(targetX / 40);
@@ -34,6 +35,9 @@ var EnemyMap = (function (_super) {
         var enemyFishY = Math.ceil(this.enemyFish.y / 40);
         var pathArr = this.findPath(enemyFishW, enemyFishY, fishW, FishH) || [];
         this.animation(pathArr);
+    };
+    // 设置出身地和目的地
+    EnemyMap.prototype.siteMap = function () {
     };
     // 动画
     EnemyMap.prototype.animation = function (pathArr) {
