@@ -161,19 +161,19 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createGameScene = function () {
-        // this.bg = new BgMap();
-        // this.addChild(this.bg);
-        // // 初始化开始按钮
-        // this.bg.start();
+        this.bg = new BgMap();
+        this.addChild(this.bg);
+        // 初始化开始按钮
+        this.bg.start();
         // // 关卡网格
-        // this.levelGroup = new LevelGroup(9, [1]);
-        // this.addChild(this.levelGroup);
-        // this.levelGroup.y = 150;
-        // this.levelGroup.game.y = -150;
+        this.levelGroup = new LevelGroup(9, [1]);
+        this.addChild(this.levelGroup);
+        this.levelGroup.y = 150;
+        this.levelGroup.game.y = -150;
         // this.touchEnabled = true;
         // this.addEventListener( egret.TouchEvent.TOUCH_TAP, this.addMap, this );
         //微信小游戏里 game.json配置: 横屏 deviceOrientation: landscape
-        this.addMap();
+        //this.addMap();
     };
     Main.prototype.addMap = function () {
         this.addChild(new Map());

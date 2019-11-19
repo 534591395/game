@@ -37,6 +37,7 @@ var Map = (function (_super) {
         //load complete
         urlLoader.addEventListener(egret.Event.COMPLETE, function (event) {
             var data = egret.XML.parse(event.target.data);
+            console.log(data);
             var tmxTileMap = new tiled.TMXTilemap(800, 480, data, url);
             tmxTileMap.render();
             //self.stage.stageHeight

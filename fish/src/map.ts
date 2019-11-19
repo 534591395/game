@@ -40,7 +40,7 @@ class Map extends egret.DisplayObjectContainer {
             
             
             var data:any = egret.XML.parse(event.target.data);
-            
+            console.log(data);
             var tmxTileMap:tiled.TMXTilemap = new tiled.TMXTilemap(800, 480, data, url);
             
             tmxTileMap.render();
