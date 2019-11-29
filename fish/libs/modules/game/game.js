@@ -2842,13 +2842,15 @@ var egret;
             function onLoadComplete(e) {
                 removeListeners();
                 var bitmapData = imageLoader.data;
-                bitmapData.source.setAttribute("bitmapSrc", virtualUrl);
+                if (bitmapData.source.setAttribute) {
+                    bitmapData.source.setAttribute("bitmapSrc", virtualUrl);
+                }
                 var texture = new egret.Texture();
                 texture._setBitmapData(bitmapData);
                 loader.data = texture;
                 window.setTimeout(function () {
                     loader.dispatchEventWith(egret.Event.COMPLETE);
-                }, self);
+                }, 0);
             }
             function removeListeners() {
                 imageLoader.removeEventListener(egret.Event.COMPLETE, onLoadComplete, self);
@@ -4396,7 +4398,7 @@ var egret;
  * @private
  */
 egret["testDeviceType1"] = function () {
-    if (!window["navigator"]) {
+    if (!window["navigator"] || !navigator) {
         return true;
     }
     var ua = navigator.userAgent.toLowerCase();

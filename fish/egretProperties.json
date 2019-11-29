@@ -42,5 +42,11 @@
       "name": "particle",
       "path": "../particle/libsrc"
     }
-  ]
+  ],
+  "targets": {
+    "android": {
+      "appname": "44",
+      "packagename": "com.companyname"
+    }
+  }
 }
