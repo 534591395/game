@@ -70,13 +70,15 @@ class Main extends eui.UILayer {
     private async loadResource() {
         try {
             egret.ImageLoader.crossOrigin = 'anonymous';
-            await RES.loadConfig("default.res.json", "resource/");
+            //await RES.loadConfig("default.res.json", "resource/");
             //await RES.loadConfig("default.res.json", "https://wxgame.dreamrabbit.tech/game/resource/");
+            await RES.loadConfig("default.res.json", "http://10.216.184.136:3000/resource/");
             await this.loadTheme();
             await RES.loadGroup("loading", 1);
             const loadingView = new LoadingUI();
             this.stage.addChild(loadingView);
-            await RES.loadGroup("preload", 0, loadingView);
+            await RES.loadGroup("level", 0, loadingView);
+            //await RES.loadGroup("preload", 0, loadingView);
             this.stage.removeChild(loadingView);
         }
         catch (e) {
